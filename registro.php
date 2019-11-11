@@ -1,53 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>4EGames</title>
-</head>
+<?php include('./componentes/module/head.php') ?>
 <body>
-    <header>
-        <div class="menu">
-            <div class="menu-lista">
-                <ul>
-                    <li>
-                        <a href="">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            F.A.Q
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Catalogo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Contacto
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="Titulo">
-                <h1>
-                    4EGames
-                </h1>
-            </div>
-            <div class="Iconos">
-                <div>
-                    <img src="" alt="" width ="80" height="80">
-                </div>
-                <div>
-                    <img src="" alt="" width ="80" height="80">
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include('./componentes/module/header.php'); ?>
     <section class="miPerfil">
         <div class="Datos">
             <div class="titulo">
@@ -56,22 +11,22 @@
             <div class="datosUsuario">
                 <div class="dato">
                     <div class="label">
-                        <label for="nombre">
+                        <label for="nombreReg">
                             Nombre
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_nombre_ACA</p>
+                            <input type="text" name="nombreReg" id="emailContacto" validate>
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        <label for="apellido">
+                        <label for="apellidoReg">
                             Apellido
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_apellido_ACA</p>
+                            <input type="text" name="apellidoReg" id="emailContacto" validate>
                     </div>
                 </div>
                 <div class="dato">
@@ -81,37 +36,37 @@
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_email_ACA</p>
+                            <input type="email" name="emailReg" id="emailContacto" validate>
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        <label for="pais">
+                        <label for="paisReg">
                             Pais
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_pais_ACA</p>
+                         <input type="text" name="paisReg" id="emailContacto" validate>
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        <label for="provincia">
+                        <label for="provinciaReg">
                             Provincia
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_provincia_ACA</p>
+                         <input type="text" name="provinciaReg" id="emailContacto" validate>
                     </div>
                 </div>
                 <div class="dato">
                     <div class="label">
-                        <label for="localidad">
+                        <label for="localidadReg">
                             Localidad
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_Localidad_ACA</p>
+                         <input type="text" name="localidadReg" id="emailContacto" validate>
                     </div>
                 </div>
                 <div class="dato">
@@ -121,11 +76,12 @@
                         </label>
                     </div>
                     <div class="datoUsu">
-                        <p>Dato_f-d-n_ACA</p>
+                         <input type="date" name="fechadenacimiento" id="emailContacto" validate>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <?php icluide('./componentes/module/footer.php'); ?>
 </body>
 </html>

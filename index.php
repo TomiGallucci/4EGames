@@ -1,57 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>4EGames</title>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="shortcut icon" href="" type="image/x-icon">
-</head>
+<?php include('./componentes/module/head.php') ?>
 <body>
-    <header>
-        <div class="menu">
-            <div class="menu-lista">
-                <ul>
-                    <li>
-                        <a href="">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            F.A.Q
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Catalogo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Contacto
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="Titulo">
-                <h1>
-                    4EGames
-                </h1>
-            </div>
-            <div class="Iconos">
-                <div>
-                    <a href="">
-                        <img src="" alt="perfil" width ="80" height="80">
-                    </a>
-                </div>
-                <div>
-                    <img src="" alt="carrito" width ="80" height="80">
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include('./componentes/module/header.php'); ?>
     <section class="prodDelDia">
         <div class="Subtitulo">
             <h2>Producto del dia</h2>
@@ -138,7 +89,6 @@
                              alt=""
                              width="25%"
                              height="5%"
-                             
                              >
                     </div>
                 </div>
@@ -181,5 +131,6 @@
             </div>
         </div>
     </section>
+    <?php icluide('./componentes/module/footer.php'); ?>
 </body>
 </html>

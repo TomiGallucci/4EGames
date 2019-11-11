@@ -1,0 +1,9 @@
+    <footer>
+        <h3>4EGames</h3>
+        <ul>
+            <li>Home</li>
+            <li>Faq</li>
+            <li>Contacto</li>
+            <li>Catalogo</li>
+        </ul>
+    </footer>
