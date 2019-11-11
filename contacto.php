@@ -50,6 +50,6 @@
             </div>
         </div>
     </section> 
-    <?php icluide('./componentes/module/footer.php'); ?>
+    <?php include('./componentes/module/footer.php'); ?>
 </body>
 </html>
