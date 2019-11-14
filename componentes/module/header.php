@@ -1,43 +1,19 @@
 <header>
-        <div class="menu">
-            <div class="menu-lista">
-                <ul>
-                    <li>
-                        <a href="">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            F.A.Q
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Catalogo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Contacto
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="Titulo">
-                <h1>
-                    4EGames
-                </h1>
-            </div>
-            <div class="Iconos">
-                <div>
-                    <a href="">
-                        <img src="" alt="perfil" width ="80" height="80">
-                    </a>
-                </div>
-                <div>
-                    <img src="" alt="carrito" width ="80" height="80">
-                </div>
-            </div>
+     
+<nav>
+    <div class="nav-wrapper">
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="" href="#" ><i class="material-icons left">account_box</i>Perfil</a></li>
+        <li><a href="#" class=""><i class="material-icons left">add_shopping_cart</i>Carrito</a></li>
+      </ul>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="faq.php">F.A.Q</a></li>
+        <li><a href="catalogo.html">Catalogo</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
     </div>
+  </nav>
+      
 </header>
