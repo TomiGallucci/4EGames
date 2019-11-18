@@ -1,0 +1,26 @@
+.borderS{
+    border: 1px solid gray;
+    height: 100%;
+    /* margin-right: 5%; */
+    background-color: #BBDAD9;
+    width: 100%;
+    margin-top: 2vh;
+    
+    
+}
+.nombreProd{
+    margin-top:0%;
+}
+body{
+    background-image: url("http://www.solofondosdepantalla.net/fondos-de-pantalla/Juegos/Fondo-de-pantalla-Retro-console.jpg");
+    
+
+}
+.mtop{
+    margin-top: 49vh;
+    
+}
+.mleft{
+    margin-left: 7%;
+}
+
