@@ -1,53 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>4EGames</title>
-</head>
+<?php include('./componentes/module/head.php') ?>
 <body>
-    <header>
-        <div class="menu">
-            <div class="menu-lista">
-                <ul>
-                    <li>
-                        <a href="">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            F.A.Q
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Catalogo
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Contacto
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="Titulo">
-                <h1>
-                    4EGames
-                </h1>
-            </div>
-            <div class="Iconos">
-                <div>
-                    <img src="" alt="" width ="80" height="80">
-                </div>
-                <div>
-                    <img src="" alt="" width ="80" height="80">
-                </div>
-            </div>
-        </div>
-    </header>
+    <?php include('./componentes/module/header.php'); ?>
     <section class="contacto">
         <div class="formContacto">
             <div class="titulo">
@@ -90,13 +45,11 @@
                                    Escriba su comentario aqui..!
                                 </textarea>
                         </div>
-                   </div> 
-                   
-                 
-                 
+                   </div>  
                 </form>
             </div>
         </div>
-    </section>
+    </section> 
+    <?php include('./componentes/module/footer.php'); ?>
 </body>
 </html>
