@@ -10,8 +10,8 @@
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="index.php">Home</a></li>
         <li><a href="faq.php">F.A.Q</a></li>
-        <li><a href="catalogo.html">Catalogo</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="catalogo.php">Catalogo</a></li>
+        <li><a href="contacto.php">Contacto</a></li>
       </ul>
     </div>
   </nav>
