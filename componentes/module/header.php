@@ -1,6 +1,6 @@
 <header>
      
-<nav>
+<nav class="deep-orange lighten-1">
     <div class="nav-wrapper">
       
       <ul id="nav-mobile" class="right hide-on-med-and-down">

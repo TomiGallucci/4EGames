@@ -1,4 +1,4 @@
-<footer class="page-footer">
+<footer class="page-footer deep-orange lighten-1">
           <div class="container">
             <div class="row">
               <div class="col l6 s12 center">
@@ -16,7 +16,7 @@
               </div>
             </div>
           </div>
-          <div class="footer-copyright">
+          <div class="footer-copyright deep-orange lighten-2">
             <div class="container center">
             ©4EGames Copyrights
             
