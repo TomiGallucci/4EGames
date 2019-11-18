@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include('./componentes/module/head.php') ?>
-<link rel="stylesheet" href="provisorio.css">
+<!-- <link rel="stylesheet" href="provisorio.css">no me enlaza el css -->
 <body>
     <?php include('./componentes/module/header.php'); ?>
     <section class="Catalogo">

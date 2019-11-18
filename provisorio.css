@@ -20,7 +20,23 @@ body{
     margin-top: 49vh;
     
 }
-.mleft{
-    margin-left: 7%;
+.border{
+    border:solid black;
+    
 }
+.center{
+    text-align: center;
+}
+.comprarTodo{
+    border: gray 1px outset;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    background-color: ghostwhite;
+    text-align: right;
+    height: 15vh;
+}
+
+}
+
 

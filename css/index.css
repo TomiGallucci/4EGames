@@ -2,6 +2,41 @@ body{
     font-family: monospace;
 }
 .borderS{
-    border: solid black;
+    border: 1px solid gray;
+    height: 100%;
+    /* margin-right: 5%; */
+    background-color: #BBDAD9;
+    width: 100%;
+    margin-top: 2vh;
+    
+    
+}
+.nombreProd{
+    margin-top:0%;
+}
+body{
+    background-image: url("http://www.solofondosdepantalla.net/fondos-de-pantalla/Juegos/Fondo-de-pantalla-Retro-console.jpg");
+    
+
+}
+.mtop{
+    margin-top: 49vh;
+    
+}
+.border{
+    border:solid black;
+    
+}
+.center{
+    text-align: center;
+}
+.comprarTodo{
+    border: gray 1px outset;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    background-color: ghostwhite;
+    text-align: right;
+    height: 15vh;
 }
 
