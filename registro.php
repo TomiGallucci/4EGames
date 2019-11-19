@@ -3,8 +3,8 @@
 <?php include('./componentes/module/head.php') ?>
 <body>
     <?php include('./componentes/module/header.php'); ?>
-    <section class="miPerfil">
-        <div class="titulo">
+    <section class="RegistroUsuario">
+        <div class="titulo" style="text-align: center;">
             <h1>Mi Perfil</h1>
         </div>
         <div class="Datos">
@@ -67,6 +67,10 @@
                 </div>
             </div>
         </div>
+                <div class="buttonRegistro">
+                    <a href="./login.php" class="waves-effect waves-light btn">Confirmar</a>
+                    <a href="./login.php" class="waves-effect waves-light btn" id="cancelarRegistro">Cancelar</a>
+                </div>
     </section>
     <?php include('./componentes/module/footer.php'); ?>
 </body>
