@@ -1,6 +1,9 @@
 body{
     font-family: monospace;
 }
+body{
+    background-color: #eceff1;
+}
 
 /* CLASS CONTACT IN THE BODY FOR FILE CONTACTO.PHP */
 
@@ -38,6 +41,27 @@ body{
     font-size: 25px;
 }
 
-.ingreso{
-    
+
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+/* TOMI */
+/* ---------------------------------------------------------------------------------------------------------------------------------- */
+
+.preguntas {
+    margin-left: 5px;
+}
+.pregunta >div.Titulo-Preg{
+    color: #ff7043;
+    font-size:23px;
+    font-style: italic;
+    font-weight: bolder;
+}
+.pregunta >div.Subt-Resp{ 
+    color: black;
+    font-size: 20px;
+    font-style: oblique;
+    font-weight: lighter;
+}
+
+.productosCatalogo {
+    font-size: 24px;    
 }
