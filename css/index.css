@@ -2,7 +2,7 @@ body{
     font-family: monospace;
 }
 
-/* CLASS CONTACT IN THE BODY FOR THE FILE CONTACTO.PHP */
+/* CLASS CONTACT IN THE BODY FOR FILE CONTACTO.PHP */
 
 .contact h1{
     text-align: center;
@@ -11,6 +11,11 @@ body{
 .contact .row{
     display: flex;
     align-items: center;
+}
+
+.contact img{
+    width: 50%;
+    margin-left: 15%;
 }
 
 .contact textarea{
@@ -31,4 +36,8 @@ body{
     width: 100%;
     text-align: center;
     font-size: 25px;
+}
+
+.ingreso{
+    
 }

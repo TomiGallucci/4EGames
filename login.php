@@ -3,8 +3,8 @@
 <?php include('./componentes/module/head.php') ?>
 <body>
     <?php include('./componentes/module/header.php'); ?>
-        <section class="Ingreso">
-       <form class="form" action="">
+        <section class="Ingreso row">
+        <form class="form" action="" class="col s5">
             <div class="titulo">
                 <h1>Ingresar a 4EGames Comunity</h1>
             </div>
@@ -29,6 +29,7 @@
                         <input type="password" id="" name="">
                     </div>
                     <button type="submit">Ingresar</button>
+                    <button type="submit">Registrarse</button>
                     <a href="">
                         <p>He olvidado mi contraseña.</p>
                     </a>
