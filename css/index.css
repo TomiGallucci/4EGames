@@ -1,157 +1,19 @@
 body{
     font-family: monospace;
-}
-body{
-    background-color: #eceff1;
+    background-color: rgb(172,229,255);
 }
 
-/* CLASS CONTACT IN THE BODY FOR FILE CONTACTO.PHP */
-
-.contact h1{
-    text-align: center;
-}
-
-.contact .row{
-    display: flex;
-    align-items: center;
-}
-
-.contact img{
-    width: 50%;
-    margin-left: 15%;
-}
-
-.contact textarea{
-    resize: none;
-    height: 70px;
-}
-
-.contact .labelContact label{
-    font-size: 1.2rem;
-    font-weight: bolder;
-}
-
-.contact .labelContact, .contact [type="submit"]{
-    margin-top: 5%;
-}
-
-.contact form button{
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-}
-
-#cancelarRegistro{
-    background-color: red;
-}
-
-#arreglo a{
-    color: black;
-    text-decoration-line: underline;
-    font-size: 1.2rem;
-    font-weight: bolder;
-}
-
-.Ingreso label{
-    font-size: 1.2rem;
-    font-weight: bolder;
-}
-
-.RegistroUsuario label{
-    font-size: 1.2rem;
-    font-weight: bolder;
-}
-
-.datosIngresados{
-    justify-content: center;
-    text-align: center;
-}
-
-.Ingreso form.form{
-    display: flex;
-    justify-content: center;
-    background-color: rgba(255,255,255, 0.7);
-    text-align: center;
-}
-.RegistroUsuario .Datos{
-    display: flex;
-    justify-content: center;
-    background-color: rgba(255,255,255, 0.7);
-    text-align: center;
-}
-
-.Ingreso form.form .datosIngresados{
-    margin: 0;
-}
-
-.RegistroUsuario .buttonRegistro{
-    text-align: center;
-    background-color: rgba(255,255,255, 0.7);
-}
-
-/* ----------------------------------------------------------------------------------------------------------------------------------- */
-/* LUCAS */
-/* ----------------------------------------------------------------------------------------------------------------------------------- */
-.borderS{
-    border: 1px solid gray;
-    height: 100%;
-    /* margin-right: 5%; */
-    background-color: #BBDAD9;
-    width: 100%;
-    margin-top: 2vh;
-    
-    
-}
-.nombreProd{
-    margin-top:0%;
-}
-body, .RegistroUsuario, .Ingreso{
+div.fondo{
     background-image: url("http://www.solofondosdepantalla.net/fondos-de-pantalla/Juegos/Fondo-de-pantalla-Retro-console.jpg");
-    background-position: center;
-
-}
-.mtop{
-    margin-top: 49vh;
-    
-}
-.border{
-    border:solid black;
-    
-}
-.center{
-    text-align: center;
-}
-.comprarTodo{
-    border: gray 1px outset;
-    position: fixed;
-    bottom: 0%;
-    width: 100%;
-    background-color: ghostwhite;
-    text-align: right;
-    height: 15vh;
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    background-size: contain;
 }
 
-
-/* ---------------------------------------------------------------------------------------------------------------------------------- */
-/* TOMI */
-/* ---------------------------------------------------------------------------------------------------------------------------------- */
-
-.preguntas {
-    margin-left: 5px;
-}
-.pregunta >div.Titulo-Preg{
-    color: #ff7043;
-    font-size:23px;
-    font-style: italic;
-    font-weight: bolder;
-}
-.pregunta >div.Subt-Resp{ 
-    color: black;
-    font-size: 20px;
-    font-style: oblique;
-    font-weight: lighter;
+div.fondo div.container{
+    background-color: rgba(255,255,255,0.5);
 }
 
-.productosCatalogo {
-    font-size: 24px;    
+.row{
+    margin: 0;
 }

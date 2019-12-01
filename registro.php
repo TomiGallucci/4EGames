@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include('./componentes/module/head.php') ?>
+
 <body>
     <?php include('./componentes/module/header.php'); ?>
-    <section class="RegistroUsuario">
-        <div class="titulo" style="text-align: center;">
-            <h1>Mi Perfil</h1>
-        </div>
-        <div class="Datos">
-            <div class="datosUsuario">
-                <div class="dato">
-                    <div class="label">
-                        <label for="nombreReg">
-                            Nombre
-                        </label>
-                        <input type="text" name="nombreReg" id="emailContacto" validate>
-                    </div>
-                </div>
-                <div class="dato">
-                    <div class="label">
-                        <label for="apellidoReg">
-                            Apellido
-                        </label>
-                        <input type="text" name="apellidoReg" id="emailContacto" validate>
-                    </div>
-                </div>
-                <div class="dato">
-                    <div class="label">
-                        <label for="email">
-                            Email
-                        </label>
-                        <input type="email" name="emailReg" id="emailContacto" validate>
-                    </div>
-                </div>
-                <div class="dato">
-                    <div class="label">
-                        <label for="paisReg">
-                            Pais
-                        </label>
-                        <input type="text" name="paisReg" id="emailContacto" validate>
-                    </div>
-                </div>
-                <div class="dato">
-                    <div class="label">
-                        <label for="provinciaReg">
-                            Provincia
-                        </label>
-                        <input type="text" name="provinciaReg" id="emailContacto" validate>
-                    </div>
-                </div>
-                <div class="dato">
-                    <div class="label">
-                        <label for="localidadReg">
-                            Localidad
-                        </label>
-                        <input type="text" name="localidadReg" id="emailContacto" validate>
-                    </div>
-                </div>
-                <div class="dato">
-                    <div class="label">
-                        <label for="fechadenacimiento">
-                            Fecha de Nacimiento
-                        </label>
-                        <input type="date" name="fechadenacimiento" id="emailContacto" validate>
-                    </div>
-                </div>
+    <div class="fondo">
+        <div class="container">
+            <div class="registroTitle">
+                <h1>Bienvenido a nuestro formulario de registro!</h1>
             </div>
-        </div>
-                <div class="buttonRegistro">
-                    <a href="./login.php" class="waves-effect waves-light btn">Confirmar</a>
-                    <a href="./login.php" class="waves-effect waves-light btn" id="cancelarRegistro">Cancelar</a>
+            <form action="./componentes/module/validation.php" method="POST">
+                <div>
+                    <label for="name">
+                        Nombre
+                    </label>
+                    <input type="text" name="name" validate>
                 </div>
-    </section>
+                <div>
+                    <label for="lastname">
+                        Apellido
+                    </label>
+                    <input type="text" name="lastname" validate>
+                </div>
+                <div>
+                    <label for="password">
+                        Contraseña
+                    </label>
+                    <input type="password" name="password" validate>
+                </div>
+                <div>
+                    <label for="email">
+                        Email
+                    </label>
+                    <input type="email" name="email" validate>
+                </div>
+                <div>
+                    <label for="pais">
+                        Pais
+                    </label>
+                    <input type="text" name="pais" validate>
+                </div>
+                <div>
+                    <label for="provincia">
+                        Provincia
+                    </label>
+                    <input type="text" name="provincia" validate>
+                </div>
+                <div>
+                    <label for="localidad">
+                        Localidad
+                    </label>
+                    <input type="text" name="localidad" validate>
+                </div>
+                <div>
+                    <label for="birthday">
+                        Fecha de Nacimiento
+                    </label>
+                    <input type="date" name="birthday" validate>
+                </div>
+                <div>
+                    <label for="loguedBox">
+                        Mantener sesión iniciada
+                    </label>
+                    <input type="checkbox" name="loguedBox" style="opacity: 1;pointer-events:all;position:relative;" id="">
+                </div>
+                <button name="btnRegistro" class="waves-effect waves-light btn">Confirmar</button>
+                <button name="btnCancelRegistro" class="waves-effect waves-light btn red">Cancelar</button>
+            </form>
+        </div>
+    </div>
     <?php include('./componentes/module/footer.php'); ?>
 </body>
+
 </html>

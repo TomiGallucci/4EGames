@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include('./componentes/module/head.php') ?>
+
 <body>
     <?php include('./componentes/module/header.php'); ?>
-        <section class="Ingreso row">
-            <div class="titulo" style="text-align:center;">
-                <h1>Ingresar a 4EGames Comunity</h1>
+    <div class="fondo">
+        <div class="container">
+            <div>
+                <h1>Ingresar a 4EGames</h1>
             </div>
-            <form class="form" action="" class="">
-                <div class="datoIngresados col s3" style="margin:0;">
-                    <div class="emailLogin">
-                        <div class="labelLogin">
-                            <label for="emailLogin">
-                                Email
-                            </label>
-                        </div>
-                        <div class="inputLogin">
-                            <input type="email" id="" name="">
-                        </div>
-                    </div>
-                    <div class="contraLogin">
-                        <div class="labelLogin">
-                            <label for="contraLogin">
-                                Contraseña
-                            </label>
-                        </div>
-                        <div class="inputLogin">
-                            <input type="password" id="" name="">
-                        </div>
-                        <button type="submit" class="waves-effect waves-light btn">Ingresar</button>
-                        <a href="./registro.php" class="waves-effect waves-light btn">Registrarse</a>
-                        <div id="arreglo">
-
-                            <a href="">
-                                <p>He olvidado mi contraseña</p>
-                            </a>
-                            <a href="">
-                                <p>Ingresar con Google</p>
-                            </a>
-                            <a href="">
-                                <p>Ingresar con Facebook</p>
-                            </a>
-                        </div>
-                    </div>
+            <form action="./componentes/module/validation.php" method="POST">
+                <div>
+                    <label for="email">
+                        Email
+                    </label>
+                    <input type="email" id="" name="email" value="" required>
                 </div>
+                <div>
+                    <label for="password">
+                        Contraseña
+                    </label>
+                    <input type="password" id="" name="password" required>
+                </div>
+                <div>
+                    <label for="loguedBox">
+                        Mantener sesión iniciada
+                    </label>
+                    <input type="checkbox" name="loguedBox" style="opacity: 1;pointer-events:all;position:relative;" id="">
+                </div>
+                <button name="btnLogin" class="waves-effect waves-light btn">Ingresar</button>
             </form>
-    </section>
+                <a href="./registro.php" class="waves-effect waves-light btn">Registrarse</a>
+                <div id="arreglo">
+
+                    <a href="">
+                        <p>He olvidado mi contraseña</p>
+                    </a>
+                    <a href="">
+                        <p>Ingresar con Google</p>
+                    </a>
+                    <a href="">
+                        <p>Ingresar con Facebook</p>
+                    </a>
+                </div>
+        </div>
+    </div>
     <?php include('./componentes/module/footer.php'); ?>
 </body>
+
 </html>
