@@ -9,7 +9,7 @@
             <div class="registroTitle">
                 <h1>Bienvenido a nuestro formulario de registro!</h1>
             </div>
-            <form action="./componentes/module/validation.php" method="POST">
+            <form action="./componentes/module/validation.php" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name">
                         Nombre
@@ -21,6 +21,12 @@
                         Apellido
                     </label>
                     <input type="text" name="lastname" validate>
+                </div>
+                <div>
+                    <label for="fotoCarnet">
+                        Foto de Perfil
+                    </label>
+                    <input type="file" name="fotoCarnet" validate>
                 </div>
                 <div>
                     <label for="password">
@@ -59,10 +65,10 @@
                     <input type="date" name="birthday" validate>
                 </div>
                 <div>
-                    <label for="loguedBox">
-                        Mantener sesión iniciada
+                    <label for="remember">
+                        Recordar usuario
                     </label>
-                    <input type="checkbox" name="loguedBox" style="opacity: 1;pointer-events:all;position:relative;" id="">
+                    <input type="checkbox" name="remember" style="opacity: 1;pointer-events:all;position:relative;" id="">
                 </div>
                 <button name="btnRegistro" class="waves-effect waves-light btn">Confirmar</button>
                 <button name="btnCancelRegistro" class="waves-effect waves-light btn red">Cancelar</button>

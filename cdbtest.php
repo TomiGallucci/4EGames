@@ -1,7 +1,3 @@
 <?php
-
-$word = "aA";
-
-$test = ctype_lower($word);
-
-echo $test;
+$aca = dirname(__file__);
+rename("$aca/css/perfilPictures/cdbiancotti@gmail.com.jpg", "$aca/css/perfilPictures/pepegrillo.jpg");

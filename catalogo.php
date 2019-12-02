@@ -4,7 +4,7 @@
 <!-- <link rel="stylesheet" href="provisorio.css">no me enlaza el css -->
 <body>
     <?php include('./componentes/module/header.php'); ?>
-    <section class="Catalogo">
+    <div class="fondo">
         <div class="titulo">
             <h1>Catalogo</h1>
         </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <?php include('./componentes/module/footer.php'); ?>
 </body>
 </html>

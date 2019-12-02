@@ -1,3 +1,13 @@
+<?php
+if(isset($_COOKIE["usermail"])){
+    $useremail = $_COOKIE["usermail"];
+    $rememberMe = "checked";
+}else{
+    $useremail = "";
+    $rememberMe = "";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include('./componentes/module/head.php') ?>
@@ -14,7 +24,7 @@
                     <label for="email">
                         Email
                     </label>
-                    <input type="email" id="" name="email" value="" required>
+                    <input type="email" id="" name="email" value="<?= $useremail ?>" required>
                 </div>
                 <div>
                     <label for="password">
@@ -23,10 +33,10 @@
                     <input type="password" id="" name="password" required>
                 </div>
                 <div>
-                    <label for="loguedBox">
-                        Mantener sesión iniciada
+                    <label for="remember">
+                        Recordar usuario
                     </label>
-                    <input type="checkbox" name="loguedBox" style="opacity: 1;pointer-events:all;position:relative;" id="">
+                    <input type="checkbox" name="remember" <?= $rememberMe ?> style="opacity: 1;pointer-events:all;position:relative;" id="">
                 </div>
                 <button name="btnLogin" class="waves-effect waves-light btn">Ingresar</button>
             </form>
