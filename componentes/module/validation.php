@@ -56,7 +56,9 @@ function validatePicture($file)
 }
 
 // function validateCandC()
-// { }
+// {    API to use
+//     https://raw.githubusercontent.com/David-Haim/CountriesToCitiesJSON/master/countriesToCities.json
+// }
 
 function logIn($usermail, $password)
 {

@@ -17,7 +17,7 @@ if(isset($_COOKIE["usermail"])){
     <div class="fondo">
         <div class="container">
             <div>
-                <h1>Ingresar a 4EGames</h1>
+                <h1>Cambio de contraseña</h1>
             </div>
             <form action="./componentes/module/validation.php" method="POST">
                 <div>
@@ -27,10 +27,16 @@ if(isset($_COOKIE["usermail"])){
                     <input type="email" id="" name="email" value="<?= $useremail ?>" required>
                 </div>
                 <div>
-                    <label for="password">
+                    <label for="password1">
                         Contraseña
                     </label>
-                    <input type="password" id="" name="password" required>
+                    <input type="password" id="" name="password1" required>
+                </div>
+                <div>
+                    <label for="password2">
+                        Contraseña
+                    </label>
+                    <input type="password" id="" name="password2" required>
                 </div>
                 <div>
                     <label for="remember">
@@ -38,21 +44,9 @@ if(isset($_COOKIE["usermail"])){
                     </label>
                     <input type="checkbox" name="remember" <?= $rememberMe ?> style="opacity: 1;pointer-events:all;position:relative;" id="">
                 </div>
-                <button name="btnLogin" class="waves-effect waves-light btn">Ingresar</button>
+                <button name="btnPassChange" class="waves-effect waves-light btn">Confirmar</button>
             </form>
-                <a href="./registro.php" class="waves-effect waves-light btn">Registrarse</a>
-                <div id="arreglo">
-
-                    <a href="changepass.php">
-                        <p>He olvidado mi contraseña</p>
-                    </a>
-                    <a href="">
-                        <p>Ingresar con Google</p>
-                    </a>
-                    <a href="">
-                        <p>Ingresar con Facebook</p>
-                    </a>
-                </div>
+                <a href="index.php" class="waves-effect waves-light btn">Cancelar</a>
         </div>
     </div>
     <?php include('./componentes/module/footer.php'); ?>
