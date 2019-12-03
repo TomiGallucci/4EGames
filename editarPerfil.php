@@ -9,7 +9,7 @@
             <div class="registroTitle">
                 <h1>Edita tus datos</h1>
             </div>
-            <form action="./componentes/module/validation.php" method="POST">
+            <form action="./componentes/module/validation.php" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="name">
                         Nombre
@@ -21,6 +21,12 @@
                         Apellido
                     </label>
                     <input type="text" name="lastname" value="<?= $_SESSION["userIn"]["lastname"] ?>" validate>
+                </div>
+                <div>
+                    <label for="fotoCarnet">
+                        Foto de Perfil
+                    </label>
+                    <input type="file" name="fotoCarnet" validate>
                 </div>
                 <div>
                     <label for="email">

@@ -71,6 +71,7 @@ $editarPerfil = isset($_GET["editar"])?true:false;
                     </div>
                 </div>
                 <a href="editarPerfil.php">Cambiar datos</a>
+                <a href="changepass.php">Cambiar contraseña</a>
             </div>
         </div>
     </div>

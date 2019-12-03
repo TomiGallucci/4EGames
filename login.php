@@ -10,7 +10,10 @@ if(isset($_COOKIE["usermail"])){
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include('./componentes/module/head.php') ?>
+<?php include('./componentes/module/head.php');?>
+
+
+<?php $errores = isset($_SESSION["error"])? $_SESSION["error"]: [];?>
 
 <body>
     <?php include('./componentes/module/header.php'); ?>
@@ -25,12 +28,22 @@ if(isset($_COOKIE["usermail"])){
                         Email
                     </label>
                     <input type="email" id="" name="email" value="<?= $useremail ?>" required>
+                    <?php if(isset($errores["email"])){
+                        foreach ( $errores["email"] as $key => $value ){
+                            echo "<div style='color:red;'>$value</div>";
+                        }
+                    } ?>
                 </div>
                 <div>
                     <label for="password">
                         Contraseña
                     </label>
                     <input type="password" id="" name="password" required>
+                    <?php if(isset($errores["password"])){
+                        foreach ( $errores["password"] as $key => $value ){
+                            echo "<div style='color:red;'>$value</div>";
+                        }
+                    } ?>
                 </div>
                 <div>
                     <label for="remember">
@@ -55,6 +68,7 @@ if(isset($_COOKIE["usermail"])){
                 </div>
         </div>
     </div>
+    <?php $_SESSION["error"] = []; ?>
     <?php include('./componentes/module/footer.php'); ?>
 </body>
 
