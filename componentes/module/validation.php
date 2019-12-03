@@ -79,6 +79,19 @@ function logIn($usermail, $password)
     $_SESSION["error"]["email"]["userNoExiste"] = "No existe una cuenta asociada a ese email.";
 }
 
+function changePass($mail, $pass){
+    $users = file_get_contents("users.json");
+    $users = json_decode($users, true);
+    foreach ( $users as $index => $user ){
+        if($mail == $user["email"]){
+            $pass = password_hash($pass, PASSWORD_DEFAULT);
+            $users[$index]["password"] = $pass;
+        }
+    }
+    $newUsers = json_encode($users);
+    file_put_contents("users.json", $newUsers);
+}
+
 function registerUser($userdata, $file)
 {
     $userdata["password"] = password_hash($userdata["password"], PASSWORD_DEFAULT);
@@ -125,7 +138,7 @@ function editUser($userNewData, $userOldData)
 
 if (isset($_POST["btnLogin"])) {
     if (validateEmail($_POST["email"]) && validatePass($_POST["password"])) {
-        if ($_POST["remember"] == "on") {
+        if ($_POST["remember"]) {
             setcookie("usermail", $_POST["email"], 0, "/");
         } else {
             setcookie("usermail", "", time() - 1, "/");
@@ -134,19 +147,37 @@ if (isset($_POST["btnLogin"])) {
     } else {
         header("Location: ../../login.php");
     }
+    var_dump($_SESSION["error"]);
+}
+
+if(isset($_POST["btnPassChange"])){
+    $pass = $_POST["password1"];
+    $mail = $_POST["email"];
+    if($_POST["password1"] == $_POST["password2"]){
+        if(validatePass($pass)){
+            changePass($mail, $pass);
+            header("Location: ../../login.php");
+        }else{
+            // INCORRECT FORMAT FOR A PASSWORD
+        }
+    }else{
+        // != PASSWORDS
+    }
+    var_dump($_SESSION["error"]);
 }
 
 if (isset($_POST["btnRegistro"])) {
     if (validateFullName($_POST["name"], $_POST["lastname"]) && validateEmail($_POST["email"]) && validatePass($_POST["password"]) && validateBirthday($_POST["birthday"]) && validatePicture($_FILES["fotoCarnet"])) {
         registerUser($_POST, $_FILES["fotoCarnet"]);
-        if ($_POST["remember"] == "on") {
-            setcookie("usermail", $_POST["email"], 0, "/login.php");
-        } else {
-            setcookie("usermail", "", time() - 1, "/login.php");
-        }
+        // if ($_POST["remember"]) {
+        //     setcookie("usermail", $_POST["email"], 0, "/login.php");
+        // } else {
+        //     setcookie("usermail", "", time() - 1, "/login.php");
+        // }
 
         header("Location: ../../login.php");
     }
+    var_dump($_SESSION["error"]);
     // header("Location: ../../registro.php");
 }
 
@@ -155,6 +186,7 @@ if (isset($_POST["btnEdicion"])) {
         editUser($_POST, $_SESSION["userIn"]);
         header("Location: ../../index.php");
     }
+    var_dump($_SESSION["error"]);
 }
 
 if (isset($_POST["btnCancelEdicion"])) {

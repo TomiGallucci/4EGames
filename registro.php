@@ -64,12 +64,12 @@
                     </label>
                     <input type="date" name="birthday" validate>
                 </div>
-                <div>
+                <!-- <div>
                     <label for="remember">
                         Recordar usuario
                     </label>
                     <input type="checkbox" name="remember" style="opacity: 1;pointer-events:all;position:relative;" id="">
-                </div>
+                </div> -->
                 <button name="btnRegistro" class="waves-effect waves-light btn">Confirmar</button>
                 <button name="btnCancelRegistro" class="waves-effect waves-light btn red">Cancelar</button>
             </form>
