@@ -7,6 +7,7 @@ $_SESSION["error"] = [];
 function validateEmail($email)
 {
     if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION["datosRegistro"]["email"] = $email;
         return 1;
     }else{
         $_SESSION["error"]["email"]["format"] = "El mail no posee el formato correcto.";
@@ -40,10 +41,14 @@ function comparePass($pass1, $pass2){
 function validateFullName($name, $lastname)
 {
     if (strlen($name) < 3) $error["name"]["lenght"] = "El nombre es muy corto";
-    if (strlen($lastname) < 3) $error["lastname"]["lenght"] = "El apellido es muy corto";
     if (!ctype_alpha($name)) $error["name"]["type"] = "El nombre debe contener solo letras";
+    if (strlen($lastname) < 3) $error["lastname"]["lenght"] = "El apellido es muy corto";
     if (!ctype_alpha($lastname)) $error["lastname"]["type"] = "El apellido debe contener solo letras";
-
+    
+    
+    !isset($error["name"])? $_SESSION["datosRegistro"]["name"] = $name: 0;
+    !isset($error["lastname"])? $_SESSION["datosRegistro"]["lastname"] = $lastname: 0;
+    
     if (isset($error)) {
         $_SESSION["error"] = $error;
         return 0;
@@ -61,6 +66,8 @@ function validateBirthday($birthday)
         $_SESSION["error"]["age"] = "Debes ser mayor de 18 años para crearte una cuenta.";
         return 0;
     }
+    $_SESSION["datosRegistro"]["birthday"] = $birthday;
+
     return 1;
 }
 
@@ -202,6 +209,9 @@ if (isset($_POST["btnRegistro"])) {
         registerUser($_POST, $_FILES["fotoCarnet"]);
         header("Location: ../../login.php");
     }else{
+        $_SESSION["datosRegistro"]["pais"] = $_POST["pais"];
+        $_SESSION["datosRegistro"]["provincia"] = $_POST["provincia"];
+        $_SESSION["datosRegistro"]["localidad"] = $_POST["localidad"];
         header("Location: ../../registro.php");
     }
 }

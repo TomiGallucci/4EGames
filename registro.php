@@ -3,7 +3,13 @@
 <?php include('./componentes/module/head.php') ?>
 
 
-<?php $errores = isset($_SESSION["error"])? $_SESSION["error"]: [];?>
+<?php 
+
+$errores = isset($_SESSION["error"])? $_SESSION["error"]: [];
+$goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
+// var_dump($goodData);exit;
+
+?>
 
 <body>
     <?php include('./componentes/module/header.php'); ?>
@@ -17,7 +23,7 @@
                     <label for="name">
                         Nombre
                     </label>
-                    <input type="text" name="name" validate>
+                    <input type="text" name="name" value="<?php if(isset($goodData["name"])) echo $goodData["name"]; ?>" validate>
                     <?php if(isset($errores["name"])){
                         foreach ( $errores["name"] as $key => $value ){
                             echo "<div style='color:red;'>$value</div>";
@@ -28,7 +34,7 @@
                     <label for="lastname">
                         Apellido
                     </label>
-                    <input type="text" name="lastname" validate>
+                    <input type="text" name="lastname" value="<?php if(isset($goodData["lastname"])) echo $goodData["lastname"]; ?>" validate>
                     <?php if(isset($errores["lastname"])){
                         foreach ( $errores["lastname"] as $key => $value ){
                             echo "<div style='color:red;'>$value</div>";
@@ -60,7 +66,7 @@
                     <label for="email">
                         Email
                     </label>
-                    <input type="email" name="email" validate>
+                    <input type="email" name="email" value="<?php if(isset($goodData["email"])) echo $goodData["email"]; ?>" validate>
                     <?php if(isset($errores["email"])){
                         foreach ( $errores["email"] as $key => $value ){
                             echo "<div style='color:red;'>$value</div>";
@@ -71,25 +77,25 @@
                     <label for="pais">
                         Pais
                     </label>
-                    <input type="text" name="pais" validate>
+                    <input type="text" name="pais" value="<?php if(isset($goodData["pais"])) echo $goodData["pais"]; ?>" validate>
                 </div>
                 <div>
                     <label for="provincia">
                         Provincia
                     </label>
-                    <input type="text" name="provincia" validate>
+                    <input type="text" name="provincia" value="<?php if(isset($goodData["provincia"])) echo $goodData["provincia"]; ?>" validate>
                 </div>
                 <div>
                     <label for="localidad">
                         Localidad
                     </label>
-                    <input type="text" name="localidad" validate>
+                    <input type="text" name="localidad" value="<?php if(isset($goodData["localidad"])) echo $goodData["localidad"]; ?>" validate>
                 </div>
                 <div>
                     <label for="birthday">
                         Fecha de Nacimiento
                     </label>
-                    <input type="date" name="birthday" validate>
+                    <input type="date" name="birthday" value="<?php if(isset($goodData["birthday"])) echo $goodData["birthday"]; ?>" validate>
                     <?php if(isset($errores["age"])){
                         $ageProblem = $errores["age"];
                         echo "<div style='color:red;'>$ageProblem</div>";
@@ -100,7 +106,10 @@
             </form>
         </div>
     </div>
-    <?php $_SESSION["error"] = []; ?>
+    <?php 
+        $_SESSION["error"] = []; 
+        $_SESSION["datosRegistro"] = [];
+    ?>
     <?php include('./componentes/module/footer.php'); ?>
 </body>
 
