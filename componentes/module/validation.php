@@ -15,6 +15,7 @@ function validateEmail($email)
     }
 }
 
+// PREG MATCH! revisar diego.com.es
 function validatePass($password)
 {
     if (strlen($password) < 8) $error["lenght"] = "La contraseña debe contener al menos 8 caracteres.";
@@ -130,9 +131,25 @@ function registerUser($userdata, $file)
 {
     $userdata["password"] = password_hash($userdata["password"], PASSWORD_DEFAULT);
     unset($userdata["btnRegistro"]);
+    unset($userdata["password2"]);
     // unset($userdata["remember"]);
     $users = file_get_contents("./users.json");     // trae los usuarios registrados
     $users = json_decode($users, true);     // decodea de json a arrays asosiados
+
+    // explode() => es como split en JS
+    // EOL => end of line (salto de linea)
+    // print_r => usado para mostrar var_dump lindamente ( probar hacer el helper pre() que uso herni )
+    // probar el modo de carga al json con EOL y el append en el file_put_contents
+
+    if($users){    
+        foreach ( $users as $user ){
+            if($user["email"] == $userdata["email"]){
+                $_SESSION["error"]["email"]["exist"] = "El mail ya posee una cuenta asignada.";
+                return 0;
+            }
+        }
+    }
+            
     $email = $userdata["email"];
     $dataFile = $file["tmp_name"];      // guarda el codigo de la imagen
     // $ext = $file["name"];
@@ -144,6 +161,7 @@ function registerUser($userdata, $file)
     $users[] = $userdata;
     $users = json_encode($users);
     file_put_contents("./users.json", $users);
+    return 1;
 }
 
 function editUser($userNewData, $userOldData, $foto)
@@ -204,10 +222,9 @@ if(isset($_POST["btnPassChange"])){
 }
 
 if (isset($_POST["btnRegistro"])) {
-    $count = validateFullName($_POST["name"], $_POST["lastname"]) + validateEmail($_POST["email"]) + validatePass($_POST["password"]) + validateBirthday($_POST["birthday"]) + validatePicture($_FILES["fotoCarnet"]);
-    if ($count == 5) {
-        registerUser($_POST, $_FILES["fotoCarnet"]);
-        header("Location: ../../login.php");
+    $count = validateFullName($_POST["name"], $_POST["lastname"]) + validateEmail($_POST["email"]) + validatePass($_POST["password"]) + comparePass($_POST["password"], $_POST["password2"]) + validateBirthday($_POST["birthday"]) + validatePicture($_FILES["fotoCarnet"]);
+    if ($count == 6) {
+        registerUser($_POST, $_FILES["fotoCarnet"])? header("Location: ../../login.php") : header("Location: ../../registro.php");
     }else{
         $_SESSION["datosRegistro"]["pais"] = $_POST["pais"];
         $_SESSION["datosRegistro"]["provincia"] = $_POST["provincia"];

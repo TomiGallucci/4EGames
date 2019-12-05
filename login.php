@@ -30,7 +30,7 @@ if(isset($_COOKIE["usermail"])){
                     <input type="email" id="" name="email" value="<?= $useremail ?>" required>
                     <?php if(isset($errores["email"])){
                         foreach ( $errores["email"] as $key => $value ){
-                            echo "<div style='color:red;'>$value</div>";
+                            echo "<li style='color:red;'><small>$value</small></li>";
                         }
                     } ?>
                 </div>
@@ -41,7 +41,7 @@ if(isset($_COOKIE["usermail"])){
                     <input type="password" id="" name="password" required>
                     <?php if(isset($errores["password"])){
                         foreach ( $errores["password"] as $key => $value ){
-                            echo "<div style='color:red;'>$value</div>";
+                            echo "<li style='color:red;'><small>$value</small></li>";
                         }
                     } ?>
                 </div>

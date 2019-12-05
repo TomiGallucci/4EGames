@@ -26,7 +26,7 @@ $goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
                     <input type="text" name="name" value="<?php if(isset($goodData["name"])) echo $goodData["name"]; ?>" validate>
                     <?php if(isset($errores["name"])){
                         foreach ( $errores["name"] as $key => $value ){
-                            echo "<div style='color:red;'>$value</div>";
+                            echo "<li style='color:red;'><small>$value</small></li>";
                         }
                     } ?>
                 </div>
@@ -37,7 +37,7 @@ $goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
                     <input type="text" name="lastname" value="<?php if(isset($goodData["lastname"])) echo $goodData["lastname"]; ?>" validate>
                     <?php if(isset($errores["lastname"])){
                         foreach ( $errores["lastname"] as $key => $value ){
-                            echo "<div style='color:red;'>$value</div>";
+                            echo "<li style='color:red;'><small>$value</small></li>";
                         }
                     } ?>
                 </div>
@@ -48,7 +48,7 @@ $goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
                     <input type="file" name="fotoCarnet" validate>
                     <?php if(isset($errores["password"])){
                         $imgProblem = $errores["imgProfile"];
-                        echo "<div style='color:red;'>$imgProblem</div>";
+                        echo "<li style='color:red;'><small>$imgProblem</small></li>";
                     } ?>
                 </div>
                 <div>
@@ -58,9 +58,15 @@ $goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
                     <input type="password" name="password" validate>
                     <?php if(isset($errores["password"])){
                         foreach ( $errores["password"] as $key => $value ){
-                            echo "<div style='color:red;'>$value</div>";
+                            echo "<li style='color:red;'><small>$value</small></li>";
                         }
                     } ?>
+                </div>
+                <div>
+                    <label for="password2">
+                        Repita la contraseña
+                    </label>
+                    <input type="password" name="password2" validate>
                 </div>
                 <div>
                     <label for="email">
@@ -69,7 +75,7 @@ $goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
                     <input type="email" name="email" value="<?php if(isset($goodData["email"])) echo $goodData["email"]; ?>" validate>
                     <?php if(isset($errores["email"])){
                         foreach ( $errores["email"] as $key => $value ){
-                            echo "<div style='color:red;'>$value</div>";
+                            echo "<li style='color:red;'><small>$value</small></li>";
                         }
                     } ?>
                 </div>
@@ -98,7 +104,7 @@ $goodData = isset($_SESSION["datosRegistro"])? $_SESSION["datosRegistro"]: [];
                     <input type="date" name="birthday" value="<?php if(isset($goodData["birthday"])) echo $goodData["birthday"]; ?>" validate>
                     <?php if(isset($errores["age"])){
                         $ageProblem = $errores["age"];
-                        echo "<div style='color:red;'>$ageProblem</div>";
+                        echo "<li style='color:red;'><small>$ageProblem</small></li>";
                     } ?>
                 </div>
                 <button name="btnRegistro" class="waves-effect waves-light btn">Confirmar</button>
