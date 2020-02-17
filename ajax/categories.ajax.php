@@ -26,6 +26,37 @@ class AjaxCategories{
 		echo $a;
 
 	}
+    public $categories;
+    public function ajaxShowCategory(){
+
+        $table = "products_categories";
+        $item = "category";
+        $value = $this->categories;
+
+        $answer = ModelCategories::mdlShowCategories($table,$item, $value,$order);
+
+        if(!$answer){
+
+            $answerCreate = ModelCategories::mdlIntoCategory($table,$value);
+
+            if($answerCreate == 1){
+
+
+                $answerShow = ModelCategories::mdlShowCategories($table,$item, $value);
+
+                $a = json_encode($answerShow);
+
+            }
+
+        }else{
+
+             $a = json_encode($answer);
+        }
+       
+
+        echo $a;
+
+    }
 }
 
 
@@ -39,4 +70,10 @@ if(isset( $_POST["idCategories"])){
 	$category = new AjaxCategories();
 	$category -> idCategory = $_POST["idCategories"];
 	$category -> ajaxEditCategory();
+}
+if(isset( $_POST["categories"])){
+
+    $showCategory = new AjaxCategories();
+    $showCategory -> categories = $_POST["categories"];
+    $showCategory -> ajaxShowCategory();
 }

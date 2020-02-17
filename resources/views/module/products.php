@@ -202,6 +202,8 @@ MODAL AGREGAR PRODUCTO
                  
               </div>
               <div class="container categories"></div>
+             <input type="hidden" id="listCategory" name="listCategories">
+
             </div>
 
             <!-- ENTRADA PARA EL CÓDIGO -->
@@ -278,6 +280,7 @@ MODAL AGREGAR PRODUCTO
                   ?>
   
                 </select>
+
                  
               </div>
             </div>
@@ -417,10 +420,12 @@ MODAL AGREGAR PRODUCTO
                           <div class="input-group row">
 
                              <div class="col-xs-12 languages"></div>           
-                              <input type="hidden" id="listLanguages" name="listLanguages">
                           </div>
 
                         </div>
+
+                        <input type="hidden" id="listLanguages" name="listLanguage">
+
       
                     </div>  
 
@@ -725,9 +730,8 @@ MODAL EDITAR PRODUCTO
                                       <div class="input-group row">
 
                                                   <div class="col-xs-12 languages1"></div>           
-                                                  <input type="hidden" id="editListLanguages" name="listLanguages">
                                       </div>
-
+                                        <input type="hidden" id="editListLanguages" name="listLanguages">
                                     </div>
                   
                                 </div>  

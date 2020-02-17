@@ -36,25 +36,29 @@ class AjaxLanguage{
 
         $answer = ModelProducts::mdlShowProducts($table,$item, $value,$order);
 
-        $a = json_encode($answer);
+        if(!$answer){
+
+            $answerCreate = ModelProducts::mdlIntoLanguages($table,$value);
+
+            if($answerCreate == 1){
+
+
+                $answerShow = ModelProducts::mdlShowProducts($table,$item, $value,$order);
+
+                $a = json_encode($answerShow);
+
+            }
+
+        }else{
+
+             $a = json_encode($answer);
+        }
+       
 
         echo $a;
 
     }
-    public $newLanguage;
 
-    public function ajaxCreateLanguage(){
-
-        $table = "products_languages";
-        $value = $this->newLanguage;
-
-        $answer = ModelProducts::mdlIntoLanguages($table,$value);
-
-        $a = json_encode($answer);
-
-        echo $a;
-
-    }
 }
 
 /*=============================================
@@ -74,13 +78,4 @@ if(isset( $_POST["language"])){
     $showLenguage -> ajaxShowLanguage();
 }
 
-if(isset( $_POST["newLanguage"])){
-   
 
-    $a = new AjaxLanguage();
-    $a -> newLanguage = $_POST["newLanguage"];
-    $a -> ajaxCreateLanguage();
-
-    
-
-}

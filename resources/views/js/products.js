@@ -266,8 +266,8 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
               dataType:"json",
               success:function(anwer){  
                
+          $(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">  </i><input type="hidden" name="categories" categories="'+answer["category"]+'" /></a>');
 
-                $(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+anwer["category"]+'<i class="fa fa-ban text-red"></i><input type="hidden" name="categories[]" value="'+anwer["id"]+'" /></a>');
 
 
               }
@@ -415,13 +415,14 @@ $("#newCategories").change(function(){
 
       	}else{
 
-      		$(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">	</i><input type="hidden" name="categories[]" value="'+answer["category"]+'" /></a>');
+      		$(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">	</i><input type="hidden" class="category" name="categories" categories="'+answer["category"]+'" /></a>');
 
       	}
                 
       }
 
   	})
+    listCategories()
 
 })
 
@@ -449,13 +450,14 @@ $("#editCategories").change(function(){
 
         }else{
 
-          $(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">  </i><input type="hidden" name="categories[]" value="'+answer["category"]+'" /></a>');
+          $(".categories1").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">  </i><input type="hidden" class="category" name="categories" class="category" categories="'+answer["category"]+'" /></a>');
 
         }
                 
       }
 
     })
+    listCategories()
 
 })
 
@@ -496,7 +498,7 @@ $("#editLanguages").change(function(){
 
     console.log(obj.length);
 
-  $('.languages').append(`<a class="btn btn-primary btn-xs" role="button" style="padding: 3px">${language} <i class="fa fa-times remove" style="color: red;"></i><input type="hidden" class="language1" language="${language}" /></a>`);
+  $('.languages1').append(`<a class="btn btn-primary btn-xs" role="button" style="padding: 3px">${language} <i class="fa fa-times remove" style="color: red;"></i><input type="hidden" class="language1" language="${language}" /></a>`);
   $("#editLanguages").val('');
   listLanguage()
 })
@@ -504,18 +506,22 @@ $(document).on("click",".fa-ban",function(){
 
    $(this).parent().remove();
     listLanguage()
+    listCategories()
 })
 $(document).on('click', '.remove', function() {
 
    $(this).parent().remove();
 
    listLanguage()
+   listCategories()
 
 })
 
 function listLanguage(){
 
   var listaLanguage = [];
+
+
 
   var languages = $(".language");
 
@@ -536,70 +542,56 @@ function listLanguage(){
       processData: false,
       dataType:"json",
       success:function(answer){
+        console.log("answer", answer);
         
-        if(!answer){
 
-               var data1 = new FormData();
-               data1.append('newLanguage',a);
-
-               $.ajax({
-
-                url:"ajax/languages.ajax.php",
-                method: "POST",
-                data: data1,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType:"json",
-                success:function(answer1){
-                
-
-                  if(answer1){
-
-                    var data2 = new FormData();
-                    data2.append('language', a);
-                     $.ajax({
-
-                      url:"ajax/languages.ajax.php",
-                      method: "POST",
-                      data: data2,
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      dataType:"json",
-                      success:function(answer2){
-
-                        listaLanguage.push({"id": answer2["id"],
-                            "language": answer["language"]});
-
-                      }
-                    })
-
-                  }
+      listaLanguage.push({"id": answer["id"], "language": answer["language"]});
 
 
-                }
-              })
+       $("#listLanguages").val(JSON.stringify(listaLanguage)); 
 
-         
+        }
+      })
 
-        }else{
+  } 
 
-           listaLanguage.push({"id": answer["id"],
-                            "language": answer["language"]});
-      
-         }
+}
+function listCategories(){
 
-       
-
-      }
-  })
+  var listCategories = [];
 
 
-  }
-  console.log("json",JSON.stringify(listaLanguage));
-  console.log(listaLanguage);
 
-  $("#listLanguages").val(listaLanguage); 
+  var categories = $(".category");
+
+
+  for(var i = 0; i < categories.length; i++){
+
+    var data = new FormData();
+    let a = $(categories[i]).attr('categories');
+      data.append('categories', a);
+      console.log($(categories[i]).attr('categories'));
+      $.ajax({
+
+      url:"ajax/categories.ajax.php",
+      method: "POST",
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType:"json",
+      success:function(answer){
+        console.info("answer", answer);
+        
+
+      listCategories.push({"id": answer["id"], "category": answer["category"]});
+
+
+       $("#listCategory").val(JSON.stringify(listCategories)); 
+
+        }
+      })
+
+  } 
 
 }
