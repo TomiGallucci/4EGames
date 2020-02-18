@@ -162,63 +162,72 @@ class ControllerUsers{
 	
 				if($answerUser["email"] == $_POST["inputEmail"] && $decryp == 1){
 
-					if ($answerUser) {
+					if($answerUser["status"] == 1){				
+					
+								$_SESSION["sessionOn"] = "ok";
+								$_SESSION["id"] =  $answerUser["id"];
+
+							if($answerUser["name"] == '' && $answerUser["lastname"] == ''){
+
+								echo '<script>
 				
+										window.location = "profile";
 
-							$_SESSION["sessionOn"] = "ok";
-							$_SESSION["id"] =  $answerUser["id"];
+									</script>';
 
-						if($answerUser["name"] == '' && $answerUser["lastname"] == ''){
+							}else{
+								$_SESSION["name"] =  $answerUser["name"];
+								$_SESSION["lastname"] = $answerUser["lastname"];
+								$_SESSION["email"] =  $answerUser["email"];
+								$_SESSION["photo"] =  $answerUser["image"];
+							}
+							
+							if($answerUser["isAdmin"] == 1){
 
-							echo '<script>
-			
-									window.location = "profile";
+								$_SESSION["isAdmin"] = 1;
+
+							}
+
+
+							/*=============================================
+							REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
+							=============================================*/
+
+							date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+							$date = date('Y-m-d');
+							$hour = date('H:i:s');
+
+							$actualDate = $date.' '.$hour;
+
+							$item1 = "last_login";
+							$value1 = $actualDate;
+
+							$item2 = "id";
+							$value2 = $answerUser["id"];
+
+							$lastLogin = ModelUsers::mdlUpdateUser($table, $item1, $value1, $item2, $value2);
+
+							if($lastLogin == 1){
+
+								echo '<script>
+
+									window.location = "home";
 
 								</script>';
 
-						}else{
-							$_SESSION["name"] =  $answerUser["name"];
-							$_SESSION["lastname"] = $answerUser["lastname"];
-							$_SESSION["email"] =  $answerUser["email"];
-							$_SESSION["photo"] =  $answerUser["image"];
-						}
-						
-						if($answerUser["isAdmin"] == 1){
 
-							$_SESSION["isAdmin"] = 1;
-
-						}
+							}	
 
 
-						/*=============================================
-						REGISTRAR FECHA PARA SABER EL ÚLTIMO LOGIN
-						=============================================*/
-
-						date_default_timezone_set('America/Argentina/Buenos_Aires');
-
-						$date = date('Y-m-d');
-						$hour = date('H:i:s');
-
-						$actualDate = $date.' '.$hour;
-
-						$item1 = "last_login";
-						$value1 = $actualDate;
-
-						$item2 = "id";
-						$value2 = $answerUser["id"];
-
-						$lastLogin = ModelUsers::mdlUpdateUser($table, $item1, $value1, $item2, $value2);
-
-						if($lastLogin == 1){
-
-							echo '<script>
-
-								window.location = "home";
-
-							</script>';
-
-						}				
 					}else{
+
+					echo '<br>
+							<div class="alert alert-danger">El usuario aún no está activado</div>';
+
+				}
+				
+			}else{
 						echo '<script>
 								
 								
@@ -241,36 +250,11 @@ class ControllerUsers{
 									
 								</script>';
 					}
-				}
-
-			}else{
-				echo '<script>
-								
-								
-										swal({
-
-											type: "error",
-											title: "¡Ingrese un formato de email valido!",
-											showConfirmButton: true,
-											confirmButtonText: "Cerrar"
-
-										}).then(function(result){
-
-											if(result.value){
-											
-											
-
-											}
-
-										});
-									
-								</script>';
-
-			}
 
 		}
 
 	}
+}
 
 	static public function ctrShowUsers($item,$value)
 	{

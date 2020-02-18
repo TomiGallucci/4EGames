@@ -64,7 +64,10 @@
 								echo '<span class="hidden-md hidden-lg"><a class="btn btn-xs btn-danger text-black" id="btnAdminXs">Administrador</a></span>';
 
 							}else{
+								
 								echo '<li  class="text-title text-blue">'.$_SESSION["name"]." ".$_SESSION["lastname"].'</li>';
+								echo '<span class="hidden-md hidden-lg"><a class="btn btn-xs btn-success text-black" id="btnAdminXs">Usuario</a></span>';
+
 							}
 						}
 
