@@ -1,7 +1,7 @@
 <?php 
 
   session_start();
-
+  error_reporting(0);
 
 ?>
 <!DOCTYPE html>
@@ -109,6 +109,10 @@
          $_GET["route"] == "trademarks" ||
          $_GET["route"] == "products" ||
          $_GET["route"] == "offerday" ||
+         $_GET["route"] == "gaming" ||
+         $_GET["route"] == "merchandise" ||
+         $_GET["route"] == "faq" ||
+         $_GET["route"] == "contact" ||
          $_GET["route"] == "exit"){
 
         if($_GET["route"] == "admin"){

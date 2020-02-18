@@ -14,11 +14,11 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="<?php echo ($_GET["route"] == "home") ? 'actived1' : '' ?>"><a href="home">Inicio <span class="sr-only">(current)</span></a></li>
-	        <li><a href="<?php echo ($_GET["route"] == "gaming") ? 'actived1' : '' ?>">Gaming</a></li>
-	        <li><a href="<?php echo ($_GET["route"] == "merchandise") ? 'actived1' : '' ?>">Merchandise</a></li>
-	        <li><a href="<?php echo ($_GET["route"] == "faq") ? 'actived1' : '' ?>">F.A.Q</a></li>
-	        <li><a href="<?php echo ($_GET["route"] == "contact") ? 'actived1' : '' ?>">Contacto</a></li>
+	        <li class="<?php echo ($_GET["route"] == "home") ? 'actived' : '' ?>"><a href="home">Inicio <span class="sr-only">(current)</span></a></li>
+	        <li class="<?php echo ($_GET["route"] == "gaming") ? 'actived' : '' ?>"><a href="gaming">Gaming</a></li>
+	        <li class="<?php echo ($_GET["route"] == "merchandise") ? 'actived' : '' ?>"><a href="merchandise">Merchandise</a></li>
+	        <li class="<?php echo ($_GET["route"] == "faq") ? 'actived' : '' ?>"><a href="faq">F.A.Q</a></li>
+	        <li class="<?php echo ($_GET["route"] == "contact") ? 'actived' : '' ?>"><a href="contact">Contacto</a></li>
 	        
 	      </ul>
 	      <form class="navbar-form navbar-left">

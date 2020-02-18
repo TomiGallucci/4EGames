@@ -56,7 +56,7 @@
         </div>
         <div class="col-lg-3" style="height: 100vh;">
          
-                <div id="clock" style="margin: 0 158px"></div>
+                <div id="clock" style="margin: 0"></div>
 
          </div>
 

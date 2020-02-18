@@ -39,7 +39,7 @@ class AjaxOfferday {
 
         $answer = ControllerOfferday::ctrShowOfferday($item, $value);
 
-        echo $answer;
+        echo json_encode($answer);
 
     }
 
@@ -57,9 +57,10 @@ if(isset($_POST["activateOffer"])){
 	$activateOffers -> ajaxActivateOffer();
 
 }
-if(isset($_POST["offerOn"])){
+
+if(isset( $_POST["activeOffer"])){
     $a = new AjaxOfferday();
-    $a -> showOffer = $_POST["offerOn"];
+    $a -> showOffer = $_POST["activeOffer"];
     $a -> ajaxShowOffer();
 
 }

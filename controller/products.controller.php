@@ -23,12 +23,11 @@ class ControllerProducts{
 	static public function ctrCreateProducts(){
 
 		if(isset($_POST["newDescription"])){
-            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["newDescription"]) &&
-                     preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["newTitle"]) &&
-			   preg_match('/^[0-9]+$/', $_POST["newStock"]) &&	
+
+            if(preg_match('/^[0-9]+$/', $_POST["newStock"]) &&	
 			   preg_match('/^[0-9.]+$/', $_POST["newPurchasePrice"]) &&
 			   preg_match('/^[0-9.]+$/', $_POST["newSalePrice"])){
-                  
+
                   /*=============================================
 			VALIDAR IMAGEN
 			=============================================*/
@@ -102,7 +101,7 @@ class ControllerProducts{
 
 				$table = "products";
 
-				$data = array("code" => $_POST["newCode"],
+				$data = array("code" => $_POST["newCode"],            
                                       "title" => $_POST["newTitle"],
                                       "description" => $_POST["newDescription"],
                                       "stock" => $_POST["newStock"],
@@ -114,7 +113,7 @@ class ControllerProducts{
                                       "categories" => $_POST["listCategories"],
                                       "trademark" => $_POST["newTrademark"],
                                       "isDlc" => 1);
-
+                 
 				$answer = ModelProducts::mdlIntoProducts($table, $data);
 
 				if($answer == 1){
@@ -169,10 +168,8 @@ class ControllerProducts{
 	static public function ctrEditProducts(){
 
 		if(isset($_POST["editDescription"])){
-       
-      		if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editDescription"]) &&
-                     preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editTitle"]) &&
-      		   preg_match('/^[0-9]+$/', $_POST["editStock"]) &&	
+
+      		if(preg_match('/^[0-9]+$/', $_POST["editStock"]) &&	
       		   preg_match('/^[0-9.]+$/', $_POST["editPurchasePrice"]) &&
                      preg_match('/^[0-9.]+$/', $_POST["editSalePrice"]))
                                     {   

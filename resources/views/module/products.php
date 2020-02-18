@@ -1,4 +1,4 @@
- <?php var_dump($_POST); ?>
+
 <div class="content-fluid ">
   
   <div class="row">
@@ -39,7 +39,7 @@
                    <th>Descripcion</th>
                    <th>Stock</th>
                    <th>Precio DOLLAR</th>
-                   <th>Precio EN PESOS + GCIAS</th>
+                   <th>Precio en PESOS</th>
                    <th>Idiomas</th>
                    <th>Categoria</th>
                    <th>Empresa</th>
@@ -66,7 +66,7 @@
                        $b = "";
 
 
-                      foreach ($products as $key => $value) {
+                      foreach ($products as $keymaster => $value) {
 
                        $a = json_decode($value["categories"], true);
 
@@ -87,10 +87,10 @@
                         
 
                         echo '<tr>
-                                  <td>'.($key+1).'</td>
+                                  <td>'.($keymaster+1).'</td>
                                   <td><img src="'.$value["image"].'" width="40px"></td>
                                   <td>'.$value["title"].'</td>
-                                  <td>'.$value["description"].'</td>
+                                  <td >'.$value["description"].'</td>
                                   <td>'.$value["stock"].'</td>
                                   <td>'.$value["purchase_price"].'</td>
                                   <td>'.$value["sale_price"].'</td>

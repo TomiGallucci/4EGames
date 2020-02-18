@@ -80,76 +80,48 @@
 			<div class="box-body">
 				
 				<div class="productsPreorder mainshadow">
-				
-					<div class="item">
-						<div class="clock delivered"><span>ESTADO</span></div> 
-						<a href="" class="cover">
-							<img src="https://s1.gaming-cdn.com/images/products/5820/157x218/street-fighter-v-champion-edition-upgrade-kit-bundle-cover.jpg">
-							<img src="https://s1.gaming-cdn.com/themes/igv1/images/dlc.png" class="dlc" alt="DLC">
-							<div class="shadow">
-								<span class="discount">22% OFF</span>
-								<span class="price">PRECIO</span>
-							</div>
-						</a>
-						 <div class="date">
-						10/12/98
-						</div> 
-						<a class="button" href="https://www.instant-gaming.com/es/5820-comprar-key-steam-street-fighter-v-champion-edition-upgrade-kit-bundle/" rel="nofollow">
-						Comprar
-						</a> 
-					</div>
-					<div class="item">
-						<div class="clock delivered"><span>ESTADO</span></div> 
-						<a href="" class="cover">
-							<img src="https://s1.gaming-cdn.com/images/products/5820/157x218/street-fighter-v-champion-edition-upgrade-kit-bundle-cover.jpg">
-							<img src="https://s1.gaming-cdn.com/themes/igv1/images/dlc.png" class="dlc" alt="DLC">
-							<div class="shadow">
-								<span class="discount">22% OFF</span>
-								<span class="price">PRECIO</span>
-							</div>
-						</a>
-						 <div class="date">
-						10/12/98
-						</div> 
-						<a class="button" href="https://www.instant-gaming.com/es/5820-comprar-key-steam-street-fighter-v-champion-edition-upgrade-kit-bundle/" rel="nofollow">
-						Comprar
-						</a> 
-					</div>
-					<div class="item">
-						<div class="clock delivered"><span>ESTADO</span></div> 
-						<a href="" class="cover">
-							<img src="https://s1.gaming-cdn.com/images/products/5820/157x218/street-fighter-v-champion-edition-upgrade-kit-bundle-cover.jpg">
-							<img src="https://s1.gaming-cdn.com/themes/igv1/images/dlc.png" class="dlc" alt="DLC">
-							<div class="shadow">
-								<span class="discount">22% OFF</span>
-								<span class="price">PRECIO</span>
-							</div>
-						</a>
-						 <div class="date">
-						10/12/98
-						</div> 
-						<a class="button" href="https://www.instant-gaming.com/es/5820-comprar-key-steam-street-fighter-v-champion-edition-upgrade-kit-bundle/" rel="nofollow">
-						Comprar
-						</a> 
-					</div>
-					<div class="item">
-						<div class="clock delivered"><span>ESTADO</span></div> 
-						<a href="" class="cover">
-							<img src="https://s1.gaming-cdn.com/images/products/5820/157x218/street-fighter-v-champion-edition-upgrade-kit-bundle-cover.jpg">
-							<img src="https://s1.gaming-cdn.com/themes/igv1/images/dlc.png" class="dlc" alt="DLC">
-							<div class="shadow">
-								<span class="discount">22% OFF</span>
-								<span class="price">PRECIO</span>
-							</div>
-						</a>
-						 <div class="date">
-						10/12/98
-						</div> 
-						<a class="button" href="https://www.instant-gaming.com/es/5820-comprar-key-steam-street-fighter-v-champion-edition-upgrade-kit-bundle/" rel="nofollow">
-						Comprar
-						</a> 
-					</div>
+					
+				<?php 
+				$item = null;
+				$value = null;
+				$order = "id";
 
+				$products = ControllerProducts::ctrShowProducts($item,$value,$order);
+
+				for ($i=0; $i < 12 ; $i++) { 
+					
+					if($i == count($products)){
+						break;
+					}else{
+
+						echo '<div class="item">
+								<div class="clock delivered"><span>Disponible</span></div> 
+								<a href="" class="cover">
+									<img src="'.$products[$i]["image"].'" class="img-thumbnail">';
+									if($products[$i]["isDlc"] == 1){
+
+										echo '<img src="https://s1.gaming-cdn.com/themes/igv1/images/dlc.png" class="dlc" alt="DLC">';
+									}
+								echo '<div class="shadow">
+										<span class="discount">22% OFF</span>
+										<span class="price">'.$products[$i]["sale_price"].'</span>
+									</div>
+								</a>
+								 <div class="date">
+								'.$products[$i]["release_date"].'
+								</div> 
+								<a class="btn btn-primary" href="" rel="nofollow">
+								Comprar
+								</a> 
+							</div>';
+
+					}
+
+				}
+
+
+				?>
+					
 				</div>
 
 
@@ -164,9 +136,9 @@
 		
 		<div class="box">
 			
-			<div class="box-header">
-					
-				<div id="clock"></div>
+			<div class="box-header" style="text-align: center;">
+				OFERTDA DEL DIA
+				<div id="clock" style="margin: 0"></div>
 
 
 			</div>
