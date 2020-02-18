@@ -98,98 +98,7 @@ class ControllerProducts{
 				/*=============================================
 				GUARDAMOS LOS IDIOMAS
 				=============================================*/
-                         $lang = array();
-				if(isset($_POST["languages"])){
-
-
-                              $languages = $_POST["languages"];
-
-                             
-
-                              foreach ($languages as $key) {
-                                   
-                          
-                                    $item = "language";
-                                    $value = $key;
-                                    $table = "products_languages";
-                                    $order = "id";
-
-                                    $answerLanguage = ModelProducts::mdlShowProducts($table,$item,$value,$order);
-
-                                   if(!$answerLanguage){
-
-
-                                          $answerLang = ModelProducts::mdlIntoLanguages($table,$key);
-
-                                          $item1 = "language";
-                                          $value1 = $key;
-                                          $table1 = "products_languages";
-                                          $order1 = "id";
-
-                                          $answerLanguage1 = ModelProducts::mdlShowProducts($table,$item1,$value1,$order1);
-
-                                          if($lang = ""){
-                                                echo '<script>console.log("entro")</script>';
-                                                array_push($lang, '{"id": $answerLanguage1["id"]}'); 
-                                          }else{
-                                                echo '<script>console.log("entro1")</script>';
-                                                array_push($lang, '{"id": $answerLanguage1["id"]}') ;
-
-                                          } 
-                                    }else{
-
-                                      
-
-                                                array_push($lang, '{"id": $answerLanguage["id"]}') ;
-
-                                    }
-
-                              }
-
-                              $lang = json_encode($lang);
-
-
-                              
-                        }
-                        $cat = "";
-                        if(isset($_POST["categories"])){
-                         
-
-                              $categories = $_POST["categories"];
-
-                              
-
-                              foreach ($categories as $key) {
-                          
-                                    $item = "category";
-                                    $value = $key;
-                                    $table = "products_categories";
-
-                                    $answerCategory = ModelCategories::mdlShowCategories($table,$item,$value);
-
-                                   if(!$answerCategory){
-
-
-                                          $answerCategory= ModelCategories::mdlIntoCategory($table,$key);
-
-                                          $item1 = "category";
-                                          $value1 = $key;
-                                          $table1 = "products_categories";
-        
-
-                                          $answerCategory1 = ModelCategories::mdlShowCategories($table,$item1,$value1);
-
-                                          $cat.= '-'.$answerCategory1["id"];      
-
-                                    }else{
-
-                                           $cat.='-'.$answerCategory["id"];            
-                                    }
-
-                              }
-  
-                        }
-
+                            
 
 				$table = "products";
 
@@ -199,10 +108,10 @@ class ControllerProducts{
                                       "stock" => $_POST["newStock"],
                                       "purchase_price" => $_POST["newPurchasePrice"],
                                       "sale_price" => $_POST["newSalePrice"],
-                                      "languages" => $lang,
+                                      "languages" => $_POST["listLanguage"],
                                       "image" => $route,
                                       "url" => 'probando',
-                                      "categories" => $cat,
+                                      "categories" => $_POST["listCategories"],
                                       "trademark" => $_POST["newTrademark"],
                                       "isDlc" => 1);
 

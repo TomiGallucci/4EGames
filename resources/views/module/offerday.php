@@ -1,98 +1,66 @@
 
 <div class="content-fluid ">
   
-  <div class="row">
+    <div class="row">
     
-    <div class="col-lg-1 bg-black hidden-xs" style="height: 100vh; width: 8vw;">
+          <div class="col-lg-1 bg-black hidden-xs" style="height: 100vh; width: 8vw;">
 
-      <?php  include "partials/asidenav.php"; ?>
+             <?php  include "partials/asidenav.php"; ?>
 
-      </div>
+          </div>
 
-      <div class="col-lg-11">
+          <div class="col-lg-8" style="height: 100vh;">
+          
+              <div class="content">
+
+                <div class="box">
+
+                    <div class="box-header with-border">
       
-          <div class="content">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddOfferDay">
+                      
+                      Agregar producto del dia
 
-            <div class="box">
+                    </button>
 
-                <div class="box-header with-border">
-  
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddOfferDay">
-                  
-                  Agregar producto del dia
+                  </div>
 
-                </button>
-
-              </div>
-
-              <div class="box-body">
-                
-               <table class="table table-bordered table-striped dt-responsive table1" width="100%">
-                 
-                <thead>
-                 
-                  <tr>
-                   
-                   <th style="width:10px">#</th>
-                   <th>Imagen</th>
-                   <th>Titulo</th>
-                   <th>Precio con descuento</th>
-                   <th>Descuento</th>
-                   <th>Fecha limite</th>
-                   <th>Agregado</th>
-                   <th>Acciones</th>
-                   
-                 </tr> 
-
-                </thead>
-                <tbody>
-                  
-                  <?php 
-
-
-                    $item = null;
-                    $value = null;
-                    $offerday = ControllerOfferday::ctrShowOfferday($item,$value);
-
-                    if($offerday){
-
-                      foreach ($offerday as $key => $value) {
+                  <div class="box-body">
                     
+                       <table class="table table-bordered table-striped dt-responsive tableOfferday" width="100%">
+                         
+                        <thead>
+                         
+                          <tr>
+                           
+                           <th style="width:10px">#</th>
+                           <th>Imagen</th>
+                           <th>Titulo</th>
+                           <th>Precio con descuento</th>
+                           <th>Descuento</th>
+                           <th>Fecha limite</th>
+                           <th>Agregado</th>
+                           <th>Estado</th>
+                           <th>Acciones</th>
+                           
+                         </tr> 
 
-                    $item = "id";
-                    $value = $value["product_id"];
-                    $order = "id";
-                    $products = ControllerProducts::ctrShowProducts($item,$value,$order);
+                        </thead>                      
 
-                        echo '<tr>
-                                  <td>'.($key+1).'</td>
-                                  <td><img src="'.$products["image"].'" width="40px"></td>
-                                  <td>'.$products["title"].'</td>
-                                  <td>'.$value["price_discount"].'</td>
-                                  <td>'.$value["discount"].'</td>
-                                  <td>'.$value["date_limit"].'</td>
-                                  <td>'.$value["date"].'</td>
-                                  <td><div class="btn-group"><a href="create-offer"><button class="btn btn-warning btnEditOfferday" productId="'.$value["id"].'" data-toggle="modal" data-target="#modalEditOfferDay"><i class="fa fa-pencil"></i></button></a><a href="edit-offer"><button class="btn btn-danger btnDeleteOfferday" productId="'.$value["id"].'" code="'.$value["code"].'" image="'.$value["image"].'"><i class="fa fa-times"></i></button></a></div></td>
+                    </table>
 
-                              </tr>'; 
+                 </div>
+     
+             </div>  
+            </div>
+        </div>
+        <div class="col-lg-3" style="height: 100vh;">
+         
+                <div id="clock" style="margin: 0 158px"></div>
 
-                      }
-
-                    }
-
-                  ?>
-
-                </tbody>
-
-
-            </table>
-
-      </div>
+         </div>
 
     </div>
-
-  </section>
-
 </div>
 <!--=====================================
 MODAL AGREGAR CATEGORÍA
@@ -131,18 +99,91 @@ MODAL AGREGAR CATEGORÍA
             <div class="form-group">
               
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-th"></i></span> 
+        
+                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
+                
+                <select class="form-control input-lg text-uppercase is-invalid" name="newProducts" id="newProducts">
+                  
+                  <option value="">Selecionar JUEGO OFERTADO DEL DIA</option>
 
-                <input type="text" class="form-control input-lg" name="newCategory" placeholder="Ingresar categoría" required>
+                  <?php
 
+                  $item = null;
+                  $value = null;
+                  $order = "id";
+
+                  $products = ControllerProducts::ctrShowProducts($item, $value, $order);
+
+                  foreach ($products as $key => $value) {
+                    
+                    echo '<option class="text-uppercase" value="'.$value["id"].'">'.$value["title"].'</option>';
+                  }
+
+                  ?>
+  
+                </select>
+       
               </div>
 
             </div>
+
+             <!-- ENTRADA PARA PRECIO COMPRA -->
+
+             <div class="form-group row">
+
+                  <div class="col-xs-12 col-sm-6">
+                   
+                     
+                     <label>
+                        <input type="checkbox" class="minimal percentage" checked>
+                        DESCUENTO
+                      </label>
+                    
+                       <div class="input-group">
+                         
+                         <input type="number" class="form-control input-lg newPercentage" name="newPercentage" min="0" value="10" required>
+
+                         <span class="input-group-addon" style="width: 38px"><i class="fa fa-percent"></i></span>
+
+                       </div>
+                      
+                     </div>
+            
+                     <div class="col-xs-12 col-sm-6">
+                       <label>
+                        PRECIO CON DESCUENTO
+                      </label>
+                         <div class="input-group">
+                         
+                           <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                           <input type="number" class="form-control input-lg" id="newDiscountPrice" name="newDiscountPrice" priceReal="" min="0" step="any" placeholder="Precio de venta" required>
+
+                         </div>
+
+                      </div>
+
+                  </div>
+
+                   <div class="form-group">
+              
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="reservationtime">
+                          <input type="hidden" name="timeEnd" id="timeEnd">
+                        </div>
+
+                    </div>
+
+                 
+              </div>
+
+
   
           </div>
 
-        </div>
 
         <!--=====================================
         PIE DEL MODAL
@@ -156,15 +197,15 @@ MODAL AGREGAR CATEGORÍA
 
         </div>
 
-        <?php
-
-          $createCategory = new ControllerCategories();
-          $createCategory -> ctrCreateCategory();
-
-        ?>
+      
 
       </form>
+        <?php
 
+          $createOfferDay = new ControllerOfferday();
+          $createOfferDay -> ctrCreateOfferday();
+
+        ?>
     </div>
 
   </div>
@@ -237,8 +278,8 @@ MODAL EDITAR CATEGORÍA
 
       <?php
 
-          $editCategory = new ControllerCategories();
-          $editCategory -> ctrEditCategory();
+          $editOfferday= new ControllerOfferday();
+          $editOfferday-> ctrEditOfferday();
 
         ?> 
 
@@ -252,8 +293,8 @@ MODAL EDITAR CATEGORÍA
 
 <?php
 
-  $deleteCategory = new ControllerCategories();
-  $deleteCategory -> ctrDeleteCategory();
+  $deleteOfferday= new ControllerOfferday();
+  $deleteOfferday-> ctrDeleteOfferday();
 
 ?>
 

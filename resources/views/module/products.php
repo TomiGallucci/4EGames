@@ -38,8 +38,8 @@
                    <th>Titulo</th>
                    <th>Descripcion</th>
                    <th>Stock</th>
-                   <th>Precio Neto</th>
-                   <th>Precio Total</th>
+                   <th>Precio DOLLAR</th>
+                   <th>Precio EN PESOS + GCIAS</th>
                    <th>Idiomas</th>
                    <th>Categoria</th>
                    <th>Empresa</th>
@@ -63,44 +63,26 @@
 
                     if($products){
 
+                       $b = "";
+
+
                       foreach ($products as $key => $value) {
 
+                       $a = json_decode($value["categories"], true);
 
-                        $lang = $value["languages"];          
-                        $lang = explode("-", $lang);
-                         $language = "";
-
-
-                        for ($i=1; $i < count($lang) ; $i++) { 
-                              
-                            $item1 = "id";
-                            $value1 = $lang[$i];
-                            $table1 = "products_languages";
-
-                            $a = ModelProducts::mdlShowProducts($table1,$item1,$value1,$order);
-
-                            if ($language == ""){ $language = $a["language"]; }else{ $language.= ', '.$a["language"]; }
-                              
-
+                        foreach ($a as $key => $valuekey) {
+                            if($b == ""){ $b = $valuekey["category"]; }else{ $b.= ', '.$valuekey["category"]; }
                         }
+                       $d = "";
+                       $c = json_decode($value["languages"], true);
 
-                        $category = $value["categories"];          
-                        $category = explode("-", $category);
-                         $cat ="";
-                        for ($i=1; $i < count($category) ; $i++) { 
-                              
-                            $item1 = "id";
-                            $value1 = $category[$i];
-
-                            $a = ControllerCategories::ctrShowCategories($item1,$value1);
-
-                            if ($cat == ""){ $cat = $a["category"]; }else{ $cat.= ', '.$a["category"]; }
-                              
-
+                        foreach ($c as $key => $valkey) {
+                            if($d == ""){ $d = $valkey["language"]; }else{ $d.= ', '.$valkey["language"]; }
+              
                         }
+                   
                         $item2= "id";
                         $value2 = $value["trademark"];
-                        echo $value["trademark"];
                         $trademars = ControllerTrademarks::ctrShowTrademarks($item2,$value2);
                         
 
@@ -112,13 +94,20 @@
                                   <td>'.$value["stock"].'</td>
                                   <td>'.$value["purchase_price"].'</td>
                                   <td>'.$value["sale_price"].'</td>
-                                  <td>'.$language.'</td>
-                                  <td>'.$cat.'</td>
+                                  <td>'.$d.'</td>';
+                 
+
+
+
+                                
+                              echo '<td>'.$b.'</td>
                                   <td>'. $trademars["trademark"].'</td>
                                   <td>'.$value["date"].'</td>
                                   <td><div class="btn-group"><button class="btn btn-warning btnEditProduct" idProduct="'.$value["id"].'" data-toggle="modal" data-target="#modalEditProduct"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btnEliminarProducto" idProduct="'.$value["id"].'" code="'.$value["code"].'" image="'.$value["image"].'"><i class="fa fa-times"></i></button></div></td>
 
                               </tr>'; 
+                         $d = ""; $b = "";
+
 
                       }
 
@@ -180,7 +169,7 @@ MODAL AGREGAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <select class="form-control input-lg text-uppercase is-invalid" id="newCategories" required>
+                <select class="form-control input-lg text-uppercase is-invalid" id="newCategories">
                   
                   <option value="">Selecionar categoría</option>
 
@@ -510,7 +499,7 @@ MODAL EDITAR PRODUCTO
                           
                             <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                            <select class="form-control input-lg text-uppercase is-invalid" id="editCategories" required>
+                            <select class="form-control input-lg text-uppercase is-invalid" id="editCategories" >
                               
                               <option value="">Selecionar categoría</option>
 
@@ -531,7 +520,7 @@ MODAL EDITAR PRODUCTO
                             </select>
                              
                           </div>
-                          <div class="container categories"></div>
+                          <div class="container categories1"></div>
                         </div>
 
                         <!-- ENTRADA PARA EL CÓDIGO -->

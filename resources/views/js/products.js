@@ -227,6 +227,7 @@ EDITAR PRODUCTO
 $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
 
 	var idProduct = $(this).attr("idProduct");
+  console.log("idProduct", idProduct);
 
 	
 	var data = new FormData();
@@ -242,20 +243,18 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
       processData: false,
       dataType:"json",
       success:function(a){
+        console.log("a", a);
+        
+        let b = JSON.parse(a["categories"]);
+
+          for (i=0; i < b.length ; i++) { 
+        
+
+            var dataCategoria = new FormData();
+            dataCategoria.append("idCategories",b[i]["id"]);
 
 
-          
-
-        let b = a["categories"];
-            category = b.split('-');
-
-          for (i=1; i < category.length ; i++) { 
-                
-              var dataCategoria = new FormData();
-              dataCategoria.append("idCategories",category[i]);
-
-
-           $.ajax({
+        $.ajax({
 
               url:"ajax/categories.ajax.php",
               method: "POST",
@@ -264,9 +263,12 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
               contentType: false,
               processData: false,
               dataType:"json",
-              success:function(anwer){  
+              success:function(answer){  
+
+
                
-          $(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">  </i><input type="hidden" name="categories" categories="'+answer["category"]+'" /></a>');
+              $(".categories1")
+              .append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">  </i><input type="hidden" name="categories" categories="'+answer["category"]+'" /></a>');
 
 
 
@@ -276,13 +278,11 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
                 
 
           }
-        let c = a["languages"];
-            language = c.split('-');
-          for (i=1; i < language.length ; i++) { 
-            console.log(language[i]);
-                
+        let c = JSON.parse(a["languages"]);
+            for (i=0; i < c.length ; i++) { 
+        
               var data = new FormData();
-              data.append("idLanguages",language[i]);
+              data.append("idLanguages",c[i]["id"]);
 
 
            $.ajax({
@@ -294,10 +294,9 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
               contentType: false,
               processData: false,
               dataType:"json",
-              success:function(anwer){
-                console.log("anwer", anwer);
-               
-                $('.languages').append(`<a class="btn btn-primary btn-xs" role="button" style="padding: 3px">${anwer["language"]} <i class="fa fa-times remove" style="color: red;"></i><input type="hidden" class="lang" name="languages[]" value="${anwer["id"]}" /></a>`);
+              success:function(answer){
+           
+               $('.languages1').append(`<a class="btn btn-primary btn-xs" role="button" style="padding: 3px">${answer["language"]} <i class="fa fa-times remove" style="color: red;"></i><input type="hidden" class="language" language="${answer["language"]}" /></a>`);
 
               }
             })
@@ -318,7 +317,7 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
               processData: false,
               dataType:"json",
               success:function(anwer){
-                console.log("anwer", anwer);
+      
 
                        $("#editTrademark").val(anwer["trademark"]);
                        $("#editTrademarkId").val(anwer["id"]);
@@ -327,11 +326,6 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
             })
                 
 
- 
-
-
-
-      
            $("#editCode").val(a["code"]);
 
            $("#editTitle").val(a["title"]);
@@ -339,8 +333,6 @@ $(".tableProducts tbody").on("click", "button.btnEditProduct", function(){
            $("#editDescription").val(a["description"]);
 
            $("#editStock").val(a["stock"]);
-
-    
 
            $("#editPurchasePrice").val(a["purchase_price"]);
 
@@ -416,13 +408,14 @@ $("#newCategories").change(function(){
       	}else{
 
       		$(".categories").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">	</i><input type="hidden" class="category" name="categories" categories="'+answer["category"]+'" /></a>');
+          listCategories()
+          $("#newCategories").val('');
 
       	}
                 
       }
 
   	})
-    listCategories()
 
 })
 
@@ -451,13 +444,14 @@ $("#editCategories").change(function(){
         }else{
 
           $(".categories1").append('<a class="btn btn-xs btn-success" style="margin-top: 5px; margin-left: 3px">'+answer["category"] +'<i class="fa fa-ban text-red">  </i><input type="hidden" class="category" name="categories" class="category" categories="'+answer["category"]+'" /></a>');
+          listCategories()
 
         }
                 
       }
 
     })
-    listCategories()
+
 
 })
 
@@ -469,11 +463,6 @@ var obj = [];
 $("#newLanguage").change(function(){
   var language = $('#newLanguage').val();
 
-    obj.push(language);
-
-
-
-    console.log(obj.length);
   $('.languages').append(`<a class="btn btn-primary btn-xs" role="button" style="padding: 3px">${language} <i class="fa fa-times remove" style="color: red;"></i><input type="hidden" class="language" language="${language}" /></a>`);
 
    $("#newLanguage").val('');
@@ -569,8 +558,9 @@ function listCategories(){
 
     var data = new FormData();
     let a = $(categories[i]).attr('categories');
+
       data.append('categories', a);
-      console.log($(categories[i]).attr('categories'));
+;
       $.ajax({
 
       url:"ajax/categories.ajax.php",
@@ -581,15 +571,15 @@ function listCategories(){
       processData: false,
       dataType:"json",
       success:function(answer){
-        console.info("answer", answer);
+
         
 
-      listCategories.push({"id": answer["id"], "category": answer["category"]});
+          listCategories.push({"id": answer["id"], "category": answer["category"]});
 
-
-       $("#listCategory").val(JSON.stringify(listCategories)); 
+        $("#listCategory").val(JSON.stringify(listCategories)); 
 
         }
+
       })
 
   } 

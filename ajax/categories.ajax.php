@@ -33,7 +33,7 @@ class AjaxCategories{
         $item = "category";
         $value = $this->categories;
 
-        $answer = ModelCategories::mdlShowCategories($table,$item, $value,$order);
+        $answer = ModelCategories::mdlShowCategories($table,$item, $value);
 
         if(!$answer){
 
@@ -71,6 +71,7 @@ if(isset( $_POST["idCategories"])){
 	$category -> idCategory = $_POST["idCategories"];
 	$category -> ajaxEditCategory();
 }
+
 if(isset( $_POST["categories"])){
 
     $showCategory = new AjaxCategories();

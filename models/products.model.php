@@ -22,7 +22,7 @@ class ModelProducts{
 
 		}else{
 
-			$stmt = Connection::connect()->prepare("SELECT * FROM $table ORDER BY $order DESC");
+			$stmt = Connection::connect()->prepare("SELECT * FROM $table ORDER BY $order ASC");
 
 			$stmt -> execute();
 

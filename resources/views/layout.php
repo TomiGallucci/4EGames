@@ -43,6 +43,13 @@
    <!-- DataTables -->
   <link rel="stylesheet" href="resources/views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="resources/views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+
+    <!-- Dateranger -->
+  <link rel="stylesheet" href="resources/views/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- morris chart -->
+    <link rel="stylesheet" href="resources/views/bower_components/morris.js/morris.css">
+
+
   
 
    <!--=====================================
@@ -72,6 +79,13 @@
   <script src="resources/views/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <script src="resources/views/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
   <script src="resources/views/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+
+    <!-- datarangerpicker -->
+  <script src="resources/views/bower_components/moment/min/moment.min.js"></script>
+  <script src="resources/views/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <!-- morris chart -->
+  <script src="resources/views/bower_components/raphael/raphael.min.js"></script>
+  <script src="resources/views/bower_components/morris.js/morris.min.js"></script>
     
   </head>
   
@@ -129,6 +143,8 @@
    <script src="resources/views/js/categories.js"></script>
    <script src="resources/views/js/trademarks.js"></script>
    <script src="resources/views/js/products.js"></script>
+   <script src="resources/views/js/offerdays.js"></script>
+
 
 
 

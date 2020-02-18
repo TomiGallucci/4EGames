@@ -1,5 +1,7 @@
 <?php 
-class ControllerOfferdays{
+
+
+class ControllerOfferday{
 
 	/*=============================================
 	CREAR CATEGORIAS
@@ -7,20 +9,19 @@ class ControllerOfferdays{
 
 	static public function ctrCreateOfferday(){
 
-		if(isset($_POST["newOfferday"])){
+		if(isset($_POST["newProducts"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["newOfferday"]) && 
-                     preg_match('/^[0-9.]+$/', $_POST["newDiscountPrice"]) &&
-                     preg_match('/^[0-9.]+$/', $_POST["newDiscount"])){
+			if(preg_match('/^[0-9.]+$/', $_POST["newProducts"]) &&
+                     preg_match('/^[0-9.]+$/', $_POST["newPercentage"])){
 
 				$table = "products_offerday";
 
 				$data = array("price_discount" =>  $_POST["newDiscountPrice"],
-                                      "discount" =>  $_POST["newDiscount"],
-                                      "date_limit" => $_POST["newDateLimit"],
-                                      "product_id" => $_POST["productId"]);
-
-				$anwser = ModelOfferday::mdlIntoOfferdays($table, $data);
+                                      "discount" =>  $_POST["newPercentage"],
+                                      "date_limit" => $_POST["timeEnd"],
+                                      "product_id" => $_POST["newProducts"]);
+                        var_dump($data);
+				$anwser = ModelOfferday::mdlIntoOfferday($table, $data);
 
 				if($anwser == 1){
 
@@ -73,11 +74,11 @@ class ControllerOfferdays{
 	MOSTRAR CATEGORIAS
 	=============================================*/
 
-	static public function ctrShowOfferdays($item, $value){
+	static public function ctrShowOfferday($item, $value){
 
 		$table = "products_offerday";
 
-		$anwser = ModelOfferday::mdlShowOfferdays($table, $item, $value);
+		$anwser = ModelOfferday::mdlShowOfferday($table, $item, $value);
 
 
 		return $anwser;
@@ -88,7 +89,7 @@ class ControllerOfferdays{
 	EDITAR CATEGORIA
 	=============================================*/
 
-	static public function ctrEditOfferdays(){
+	static public function ctrEditOfferday(){
 
 		if(isset($_POST["editOfferday"])){
 
@@ -99,7 +100,7 @@ class ControllerOfferdays{
 				$data = array("trademark"=>$_POST["editOfferday"],
 							   "id"=>$_POST["idOfferday"]);
 
-				$anwser = ModelOfferday::mdlEditOfferdays($table, $data);
+				$anwser = ModelOfferday::mdlEditOfferday($table, $data);
 
 				if($anwser == 1){
 
@@ -152,14 +153,14 @@ class ControllerOfferdays{
 	BORRAR CATEGORIA
 	=============================================*/
 
-	static public function ctrDeleteOfferdays(){
+	static public function ctrDeleteOfferday(){
 
 		if(isset($_GET["idOfferday"])){
 
 			$table ="products_offerday";
 			$data = $_GET["idOfferday"];
 
-			$anwser = ModelOfferday::mdlDeleteOfferdays($table, $data);
+			$anwser = ModelOfferday::mdlDeleteOfferday($table, $data);
 
 			if($anwser == 1){
 
