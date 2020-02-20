@@ -37,7 +37,7 @@
 	      		}else{
 
 	      			echo '<li><a href="#"><i class="fa fa-heart"></i></a></li>
-					        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+					        <li><a href="shop"><i class="fa fa-shopping-cart"></i></a></li>
 					        <li class="dropdown">
 					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta <span class="caret"></span>';
 

@@ -86,6 +86,10 @@
   <!-- morris chart -->
   <script src="resources/views/bower_components/raphael/raphael.min.js"></script>
   <script src="resources/views/bower_components/morris.js/morris.min.js"></script>
+  <!-- JQUERY NUMBER -->
+  
+  <script src="resources/views/plugins/jqueryNumber/jquerynumber.min.js"></script>
+
     
   </head>
   
@@ -113,6 +117,7 @@
          $_GET["route"] == "merchandise" ||
          $_GET["route"] == "faq" ||
          $_GET["route"] == "contact" ||
+         $_GET["route"] == "shop" ||
          $_GET["route"] == "exit"){
 
         if($_GET["route"] == "admin"){

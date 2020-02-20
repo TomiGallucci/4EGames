@@ -54,13 +54,13 @@ class tableOfferday{
             TRAEMOS LAS ACCIONES
             =============================================*/ 
 
-            $button =  "<div class='btn-group'><a href='create-offer'><button class='btn btn-warning btnEditOfferday' productId='".$answer["id"]."' data-toggle='modal' data-target='#modalEditOfferDay'><i class='fa fa-pencil'></i></button></a><a href='edit-offer'><button class='btn btn-danger btnDeleteOfferday' productId='".$answer["id"]."'><i class='fa fa-times'></i></button></a></div>"; 
+            $button =  "<div class='btn-group'><a><button class='btn btn-warning btnEditOfferday' offerId='".$offer[$i]["id"]."' productId='".$answer["id"]."' data-toggle='modal' data-target='#modalEditOfferDay'><i class='fa fa-pencil'></i></button></a><a><button class='btn btn-danger btnDeleteOfferday' offerId='".$offer[$i]["id"]."' productId='".$answer["id"]."' ><i class='fa fa-times'></i></button></a></div>"; 
 
             $datosJson .='[
                   "'.($i+1).'",
                   "'.$image.'",
                   "'.$answer["title"].'",
-                  "'.$offer[$i]["price_discount"].'",
+                  "'.number_format($offer[$i]["price_discount"],2).'",
                   "'.$offer[$i]["discount"].'",
                   "'.$offer[$i]["date_limit"].'",
                   "'.$offer[$i]["date"].'",

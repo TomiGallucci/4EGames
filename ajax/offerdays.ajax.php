@@ -42,6 +42,21 @@ class AjaxOfferday {
         echo json_encode($answer);
 
     }
+    public $productId;
+
+    public function ajaxShowOfferday(){
+
+
+        $item = "product_id";
+        $value = $this->productId;
+
+
+
+        $answer = ControllerOfferday::ctrShowOfferday($item, $value);
+
+        echo json_encode($answer);
+
+    }
 
 }
 
@@ -62,5 +77,11 @@ if(isset( $_POST["activeOffer"])){
     $a = new AjaxOfferday();
     $a -> showOffer = $_POST["activeOffer"];
     $a -> ajaxShowOffer();
+
+}
+if(isset( $_POST["productId"])){
+    $b = new AjaxOfferday();
+    $b -> productId = $_POST["productId"];
+    $b -> ajaxShowOfferday();
 
 }

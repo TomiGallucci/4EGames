@@ -44,19 +44,16 @@ $('.tableOfferday').DataTable( {
 
 
  //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }},
+    $('.reservationtime').daterangepicker({ timePicker: true, timePicker24Hour: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY HH:mm:ss' }},
   function (start, end) {
-    $('#reservationtime').html(start.format('MMMM D, YYYY hh::mm:A') + ' - ' + end.format('MMMM D, YYYY hh::mm:A'));
+    $('.reservationtime').html(start.format('MMMM D, YYYY HH:mm:ss') + ' - ' + end.format('MMMM D, YYYY HH:mm:ss'));
 
-    var fechaInicial = start.format('YYYY-MM-DD hh::mm:A');
+    var fechaInicial = start.format('YYYY-MM-DD HH:mm:ss');
 
 
     var fechaFinal = end.format('YYYY-MM-DD hh::mm:A');
-    console.log("fechaFinal", fechaFinal);
-
-
-   // $('#reservationtime').attr('timeStart', fechaInicial);
-    $('#timeEnd').val(fechaFinal);
+ 
+    $('.timeEnd').val(fechaFinal);
 
   })
     
@@ -74,15 +71,19 @@ $("#newProducts").change(function(){
       processData: false,
       dataType:"json",
       success:function(answer){
-        console.log("answer", answer);
+
 
         priceBase = answer["sale_price"];
         percentage = $(".newPercentage").val();
 
 
-        $total =  Number(priceBase) - Number(priceBase * percentage /100);
+        total =  Number(priceBase) - Number(priceBase * percentage /100);
 
-        $("#newDiscountPrice").val($total).attr('priceReal', priceBase);
+        $("#newPrice").val(total).attr('priceReal', priceBase);
+
+        $("#newDiscountPrices").val(priceBase);
+        $("#newDiscountPrice").number(true, 2);
+        $("#newPercentages").val(percentage);
 
  
     }
@@ -91,19 +92,88 @@ $("#newProducts").change(function(){
 
 })
 
+
 $('.newPercentage').change(function(){
 
-       priceBase = $("#newDiscountPrice").attr('priceReal');
-       percentage = $(".newPercentage").val();
+       priceBase = $("#newPrices").attr('priceReal');
+   
 
-        $total =  Number(priceBase) - Number(priceBase * percentage /100);
 
-        $("#newDiscountPrice").val($total);
+    if($('.percentage').prop('checked')){
+
+        percentage = $("#newPercentage").val();
+
+        total =  Number(priceBase) - Number(priceBase * percentage /100);
+
+        $("#newDiscountPrice").val(total);
+
+    }
 
 
 
 
 })
+
+$("#editProducts").change(function(){
+    let a = $(this).val();
+    var data = new FormData();
+        data.append('idProduct',a);
+   $.ajax({
+
+      url:"ajax/products.ajax.php",
+      method: "POST",
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType:"json",
+      success:function(answer){
+
+
+        priceBase = answer["sale_price"];
+        percentage = $(".newPercentage").val();
+
+
+        total =  Number(priceBase) - Number(priceBase * percentage /100);
+
+        $("#editDiscountPrices").val(priceBase)
+        $("#editDiscountPrice").val(total).attr('priceReal', priceBase);
+        $("#editPercentages").val(percentage);
+        $("#editDiscountPrice").number(true, 2);
+
+ 
+    }
+   });
+
+
+})
+
+
+
+
+$('.newPercentage').change(function(){
+
+       priceBase = $("#editPrices").attr('priceReal');
+   
+
+
+    if($('.percentage').prop('checked')){
+
+        percentage = $("#editPercentage").val();
+
+        total =  Number(priceBase) - Number(priceBase * percentage /100);
+
+        $("#editDiscountPrice").val(total);
+
+    }
+
+
+
+
+})
+
+
+
 $(".tableOfferday").on("click", ".btnActive", function(){
 
     var idOffer = $(this).attr("idOffer");
@@ -160,5 +230,79 @@ $(".tableOfferday").on("click", ".btnActive", function(){
         $(this).attr('statusOffer',0);
 
     }
+
+})
+/*=============================================
+EDITAR OFERTA
+=============================================*/
+$(".tableOfferday").on("click", ".btnEditOfferday", function(){
+
+    var productId = $(this).attr("productId");
+
+    
+    var data = new FormData();
+    data.append("productId", productId);
+
+    $.ajax({
+
+        url:"ajax/offerdays.ajax.php",
+        method: "POST",
+        data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(answer){
+
+            var data = new FormData();
+                data.append("idProduct", answer["product_id"]);
+                $.ajax({
+
+                url:"ajax/products.ajax.php",
+                method: "POST",
+                data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(answer1){
+  
+               $("#reservationtime").val(answer["date_limit"]);
+               $(".timeEnd").val(answer["date_limit"]);     
+               $("#editProduct").val(answer1["id"]);
+               $("#editProduct").html(answer1["title"]);  
+               $("#editPercentage").val(answer["discount"]);
+               $("#editDiscountPrice").val(answer["price_discount"]).attr('priceReal',answer["price_discount"]);
+              
+
+
+                }
+            })
+
+        }
+
+    })
+
+})
+$(".tableOfferday").on("click", ".btnDeleteOfferday", function(){
+
+  var idOfferday = $(this).attr("productId");
+
+  swal({
+        title: '¿Está seguro de borrar la venta?',
+        text: "¡Si no lo está puede cancelar la accíón!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar venta!'
+      }).then(function(result){
+        if (result.value) {
+          
+            window.location = "index.php?route=offerday&idOfferday="+idOfferday;
+        }
+
+  })
 
 })

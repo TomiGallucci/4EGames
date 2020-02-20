@@ -132,38 +132,73 @@ MODAL AGREGAR CATEGORÍA
              <div class="form-group row">
 
                   <div class="col-xs-12 col-sm-6">
-                   
-                     
-                     <label>
-                        <input type="checkbox" class="minimal percentage" checked>
-                        DESCUENTO
-                      </label>
-                    
-                       <div class="input-group">
-                         
-                         <input type="number" class="form-control input-lg newPercentage" name="newPercentage" min="0" value="10" required>
 
-                         <span class="input-group-addon" style="width: 38px"><i class="fa fa-percent"></i></span>
-
-                       </div>
-                      
-                     </div>
-            
-                     <div class="col-xs-12 col-sm-6">
-                       <label>
-                        PRECIO CON DESCUENTO
+                        <label>
+                        PRECIO COMPRA
                       </label>
+
                          <div class="input-group">
                          
                            <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                           <input type="number" class="form-control input-lg" id="newDiscountPrice" name="newDiscountPrice" priceReal="" min="0" step="any" placeholder="Precio de venta" required>
+                           <input type="text" class="form-control input-lg" id="newPrices"  priceReal="" min="0" step="any" placeholder="Precio de venta" required>
+                           <input type="hidden" id="newPrice" >
+
+                         </div>
+                      
+                  </div>
+            
+                     <div class="col-xs-12 col-sm-6">
+
+                       <label>
+                        PRECIO CON DESCUENTO
+                      </label>
+
+                         <div class="input-group">
+                         
+                           <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                           <input type="text" class="form-control input-lg" id="newDiscountPrice" min="0" step="any" placeholder="Precio de venta" required readonly>
+                           <input type="hidden" id="newDiscountPrices" name="newDiscountPrice">
 
                          </div>
 
                       </div>
 
                   </div>
+                  <div class="form-group row">
+                  
+                    <div class="col-xs-6">
+                      
+                       <div class="input-group"> 
+
+                         <label>
+                            <input type="checkbox" class="minimal percentage" checked>
+                            DESCUENTO
+                          </label>
+
+
+                        </div>
+
+                    </div>
+                      <div class="col-xs-6">
+                            
+                       <div class="input-group">
+                         
+                         <input type="text" class="form-control input-lg newPercentage"  min="0" value="10" required>
+                         <input type="hidden" id="newPercentages" name="newPercentage">
+
+                         <span class="input-group-addon" style="width: 38px"><i class="fa fa-percent"></i></span>
+
+                       </div>
+                        
+
+                      </div>
+
+
+                    </div>
+                    
+              </div>
 
                    <div class="form-group">
               
@@ -171,8 +206,8 @@ MODAL AGREGAR CATEGORÍA
                           <div class="input-group-addon">
                             <i class="fa fa-clock-o"></i>
                           </div>
-                          <input type="text" class="form-control pull-right" id="reservationtime">
-                          <input type="hidden" name="timeEnd" id="timeEnd">
+                          <input type="text" class="form-control pull-right reservationtime">
+                          <input type="hidden" name="timeEnd" class="timeEnd">
                         </div>
 
                     </div>
@@ -244,21 +279,91 @@ MODAL EDITAR CATEGORÍA
 
           <div class="box-body">
 
-            <!-- ENTRADA PARA EL NOMBRE -->
-            
+                 
             <div class="form-group">
               
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-th"></i></span> 
+        
+                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
+                
+                <select class="form-control input-lg text-uppercase is-invalid" id="editProducts" name="editProducts">
+                  
+                  <option id="editProduct">Selecionar JUEGO OFERTADO DEL  DIA</option>
 
-                <input type="text" class="form-control input-lg" name="editCategory" id="editCategory" required>
+                  <?php
 
-                 <input type="hidden"  name="idCategory" id="idCategory" required>
+                  $item = null;
+                  $value = null;
+                  $order = "id";
 
+                  $products = ControllerProducts::ctrShowProducts($item, $value, $order);
+
+                  foreach ($products as $key => $value) {
+                    
+                    echo '<option class="text-uppercase" value="'.$value["id"].'">'.$value["title"].'</option>';
+                  }
+
+                  ?>
+  
+                </select>
+       
               </div>
 
             </div>
+
+             <!-- ENTRADA PARA PRECIO COMPRA -->
+
+             <div class="form-group row">
+
+                  <div class="col-xs-12 col-sm-6">
+                   
+                     
+                     <label>
+                        <input type="checkbox" class="minimal percentage" checked>
+                        DESCUENTO
+                      </label>
+                    
+                       <div class="input-group">
+                         
+                         <input type="text" class="form-control input-lg newPercentage" id="editPercentage" min="0" value="10" required>
+                         <input type="hidden" id="editPercentages" name="editPercentage">
+
+
+                         <span class="input-group-addon" style="width: 38px"><i class="fa fa-percent"></i></span>
+
+                       </div>
+                      
+                     </div>
+            
+                     <div class="col-xs-12 col-sm-6">
+                       <label>
+                        PRECIO CON DESCUENTO
+                      </label>
+                         <div class="input-group">
+                         
+                           <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                           <input type="text" class="form-control input-lg" id="editDiscountPrice" priceReal="" min="0" step="any" placeholder="Precio de venta" required>
+                           <input type="hidden" id="editDiscountPrices" name="editDiscountPrice">
+
+                         </div>
+
+                      </div>
+
+                  </div>
+
+                   <div class="form-group">
+              
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right reservationtime">
+                          <input type="hidden" name="editTimeEnd" class="timeEnd">
+                        </div>
+
+                    </div>
+  
   
           </div>
 
@@ -276,6 +381,8 @@ MODAL EDITAR CATEGORÍA
 
         </div>
 
+      </form>
+
       <?php
 
           $editOfferday= new ControllerOfferday();
@@ -283,7 +390,6 @@ MODAL EDITAR CATEGORÍA
 
         ?> 
 
-      </form>
 
     </div>
 

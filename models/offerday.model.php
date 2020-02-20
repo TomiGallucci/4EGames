@@ -86,14 +86,16 @@ class ModelOfferday{
 
 
     static public function mdlEditOfferday($table, $data){
+        echo '<pre>'; print_r($data); echo '</pre>';
 
-        $stmt = Connection::connect()->prepare("UPDATE $table SET price_discount = :price_discount, discount =  :discount, date_limit = :date_limit, product_id = :product_id WHERE id = :id");
+
+        $stmt = Connection::connect()->prepare("UPDATE $table SET price_discount = :price_discount, discount =  :discount, date_limit = :date_limit WHERE product_id = :product_id");
 
         $stmt->bindParam(":price_discount", $data["price_discount"], PDO::PARAM_STR);
         $stmt->bindParam(":discount", $data["discount"], PDO::PARAM_STR);
         $stmt->bindParam(":date_limit", $data["date_limit"], PDO::PARAM_STR);
         $stmt->bindParam(":product_id", $data["product_id"], PDO::PARAM_STR);
-        $stmt->bindParam(":id", $data["id"], PDO::PARAM_STR);
+
 
 
         if($stmt->execute()){

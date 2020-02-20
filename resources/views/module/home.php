@@ -94,7 +94,7 @@
 						break;
 					}else{
 
-						echo '<div class="item">
+						echo '<div class="item" style="width: 30%">
 								<div class="clock delivered"><span>Disponible</span></div> 
 								<a href="" class="cover">
 									<img src="'.$products[$i]["image"].'" class="img-thumbnail">';
@@ -110,7 +110,7 @@
 								 <div class="date">
 								'.$products[$i]["release_date"].'
 								</div> 
-								<a class="btn btn-primary" href="" rel="nofollow">
+								<a class="btn btn-primary btnAddToBuy" idProduct="'.$products[$i]["id"].'" rel="nofollow">
 								Comprar
 								</a> 
 							</div>';

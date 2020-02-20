@@ -40,3 +40,34 @@ $(".table1").DataTable({
 	}
 
 });
+
+$('.price').number(true, 2);
+
+
+$('.btnAddToBuy').on("click",function(){
+
+    var id = $(this).attr("idProduct");
+
+    var data = new FormData();
+        data.append('idProduct',id);
+
+    $.ajax({
+
+        url:"ajax/products.ajax.php",
+        method: "POST",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType:"json",
+        success:function(answer){
+            console.log("answer", answer);
+            
+
+           
+
+
+        }
+    })
+
+})

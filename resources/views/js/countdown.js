@@ -22,7 +22,7 @@ const countdown = (deadline,elem,finalMessage) => {
     let t = getRemainingTime(deadline);
 
     if(el){
-      el.innerHTML = '<div class="alert alert-danger">'+`${t.remainDays}d:${t.remainHours}h:${t.remainMinutes}m:${t.remainSeconds}s`+'</div>' ;
+      el.innerHTML = '<div class="box-footer"><div class="alert alert-danger">'+`${t.remainDays}d:${t.remainHours}h:${t.remainMinutes}m:${t.remainSeconds}s`+'</div></div>' ;
     }
     if(t.remainTime <= 1) {
       clearInterval(timerUpdate);
@@ -40,46 +40,48 @@ var data = new FormData();
     data.append("activeOffer", 1);
  $.ajax({
 
-              url:"ajax/offerdays.ajax.php",
+    url:"ajax/offerdays.ajax.php",
+    method: "POST",
+    data: data,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType:"json",
+    success:function(answer){
+
+
+      
+              var data1 = new FormData();
+                  data1.append("productId",answer["product_id"]);
+              $.ajax({
+
+              url:"ajax/products.ajax.php",
               method: "POST",
-              data: data,
+              data: data1,
               cache: false,
               contentType: false,
               processData: false,
               dataType:"json",
-              success:function(answer){
-                console.log("answer", answer);
-          
-                
-                        var data1 = new FormData();
-                            data1.append("productId",answer["product_id"]);
-                        $.ajax({
+              success:function(answer1){
 
-                        url:"ajax/products.ajax.php",
-                        method: "POST",
-                        data: data1,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        dataType:"json",
-                        success:function(answer1){
-                          console.log("answer", answer1);
-
-                      if(answer["offerOn"] == 1){
-                          $("#clock").before('<div class="box text-center"><div class="box-header"><div class="btn btn-success">'+answer1["title"]+'</div></div><div class="box-body"><div ><img src="'+answer1["image"]+'" style="width: 100%"><div class="btn-warning">-'+answer["discount"]+'% '+answer["price_discount"]+'$</div></div></div></div>');
-                          countdown(answer["date_limit"],'clock','Oferta acabada');
+                  if(answer["offerOn"] == 1){
+                      $("#clock").before('<div class="box text-center"><div class="box-header"><div class="btn btn-success">'+answer1["title"]+'</div></div><div class="box-body"><div ><img src="'+answer1["image"]+'" style="width: 100%"><div class="btn-warning">-'+answer["discount"]+'%  $'+answer["price_discount"]+'</div></div></div></div>');
+                      countdown(answer["date_limit"],'clock','<div class="btn btn-danger">Oferta acabada</div>');
 
 
-                       
-                      }else{
-                        
+                   
+                  }else{
+                    
 
-                 
-                      }
-                    }
-                  })
-      
+             
+                  }
+                }
+              })
 
-              }
 
-            })
+    }
+ })
+ $('.btn-warning').number(true, 2);
+
+
+     
